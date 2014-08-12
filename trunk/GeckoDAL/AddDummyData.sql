@@ -5,7 +5,7 @@ INSERT INTO [dbo].[Users]([UserName],[Password],[FirstName],[LastName],[Email],[
      VALUES('Pelle01', '123', 'Pelle', 'Svanslös', 'pelle@svanslos.se', '0123-45678', '2014-08-05', 0, '0', null, '', '0')
 GO
 INSERT INTO [dbo].[Users]([UserName],[Password],[FirstName],[LastName],[Email],[Phone],[CreatedDate],[FailedPasswordAttemptCount],[IsLockedOut],[LockedOutDate],[Comment],[IsDeleted])
-     VALUES('Kalle01', '123', 'Kalle', 'Anka', 'kalle@anka.se', '0123-45678', '2014-08-06', 0, '0', null, '', '0')
+     VALUES('Kalle01', '123', 'Kalle', 'Ankal', 'kalle@anka.se', '0123-45678', '2014-08-06', 0, '0', null, '', '0')
 GO
 INSERT INTO [dbo].[Users]([UserName],[Password],[FirstName],[LastName],[Email],[Phone],[CreatedDate],[FailedPasswordAttemptCount],[IsLockedOut],[LockedOutDate],[Comment],[IsDeleted])
      VALUES('Superman01', '123', 'Stål', 'Mannen', 'suuper@man.se', '0123-45678', '2014-08-07', 0, '0', null, '', '0')
