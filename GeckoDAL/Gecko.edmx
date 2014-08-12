@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Gecko.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GeckoStoreContainer">
+    <EntitySet Name="Users" EntityType="Gecko.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Courts" EntityType="Gecko.Store.Courts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bookings" EntityType="Gecko.Store.Bookings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sessions" EntityType="Gecko.Store.Sessions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserBooking" Association="Gecko.Store.UserBooking">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="BookingSession" Association="Gecko.Store.BookingSession">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="CourtSession" Association="Gecko.Store.CourtSession">
+      <End Role="Court" EntitySet="Courts" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courts">
+    <Key>
+      <PropertyRef Name="CourtID" />
+    </Key>
+    <Property Name="CourtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HourlyFee" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="BookingID" />
+    </Key>
+    <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TotalCost" Type="decimal" Nullable="false" />
+    <Property Name="IsDeleted" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserUserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+    <Property Name="SessionCost" Type="decimal" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="BookingBookingID" Type="int" Nullable="false" />
+    <Property Name="CourtCourtID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserBooking">
+    <End Role="User" Type="Gecko.Store.Users" Multiplicity="1" />
+    <End Role="Booking" Type="Gecko.Store.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingSession">
+    <End Role="Booking" Type="Gecko.Store.Bookings" Multiplicity="1" />
+    <End Role="Session" Type="Gecko.Store.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="BookingID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="BookingBookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourtSession">
+    <End Role="Court" Type="Gecko.Store.Courts" Multiplicity="1" />
+    <End Role="Session" Type="Gecko.Store.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Court">
+        <PropertyRef Name="CourtID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="CourtCourtID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Gecko" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="GeckoContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Gecko.User" />
+          <EntitySet Name="Courts" EntityType="Gecko.Court" />
+          <EntitySet Name="Bookings" EntityType="Gecko.Booking" />
+          <EntitySet Name="Sessions" EntityType="Gecko.Session" />
+          <AssociationSet Name="UserBooking" Association="Gecko.UserBooking">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="BookingSession" Association="Gecko.BookingSession">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="CourtSession" Association="Gecko.CourtSession">
+            <End Role="Court" EntitySet="Courts" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Gecko.UserBooking" FromRole="User" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Court">
+          <Key>
+            <PropertyRef Name="CourtID" />
+          </Key>
+          <Property Type="Int32" Name="CourtID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="HourlyFee" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Session" Relationship="Gecko.CourtSession" FromRole="Court" ToRole="Session" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Type="Int32" Name="BookingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BookingDate" Nullable="false" />
+          <Property Type="Decimal" Name="TotalCost" Nullable="false" />
+          <Property Type="String" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Gecko.UserBooking" FromRole="Booking" ToRole="User" />
+          <Property Type="Int32" Name="UserUserID" Nullable="false" />
+          <NavigationProperty Name="Session" Relationship="Gecko.BookingSession" FromRole="Booking" ToRole="Session" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Type="Int32" Name="SessionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="StartDateTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndDateTime" Nullable="false" />
+          <Property Type="Decimal" Name="SessionCost" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Gecko.BookingSession" FromRole="Session" ToRole="Booking" />
+          <Property Type="Int32" Name="BookingBookingID" Nullable="false" />
+          <NavigationProperty Name="Court" Relationship="Gecko.CourtSession" FromRole="Session" ToRole="Court" />
+          <Property Type="Int32" Name="CourtCourtID" Nullable="false" />
+        </EntityType>
+        <Association Name="UserBooking">
+          <End Type="Gecko.User" Role="User" Multiplicity="1" />
+          <End Type="Gecko.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="UserUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookingSession">
+          <End Type="Gecko.Booking" Role="Booking" Multiplicity="1" />
+          <End Type="Gecko.Session" Role="Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="BookingBookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourtSession">
+          <End Type="Gecko.Court" Role="Court" Multiplicity="1" />
+          <End Type="Gecko.Session" Role="Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="CourtID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="CourtCourtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GeckoStoreContainer" CdmEntityContainer="GeckoContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Gecko.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courts">
+      <EntityTypeMapping TypeName="IsTypeOf(Gecko.Court)">
+        <MappingFragment StoreEntitySet="Courts">
+          <ScalarProperty Name="CourtID" ColumnName="CourtID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HourlyFee" ColumnName="HourlyFee" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(Gecko.Booking)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UserUserID" ColumnName="UserUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="IsTypeOf(Gecko.Session)">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="SessionCost" ColumnName="SessionCost" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="BookingBookingID" ColumnName="BookingBookingID" />
+          <ScalarProperty Name="CourtCourtID" ColumnName="CourtCourtID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
