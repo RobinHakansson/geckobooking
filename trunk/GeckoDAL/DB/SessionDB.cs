@@ -24,7 +24,7 @@ namespace GeckoDAL
         public static List<Session> GetAllSessionsByCourtAndDate(int cid, DateTime date)
         {
             var result = GetAllNotDeletedSessions()
-                .Where(s => s.CourtCourtID == cid && s.StartDateTime <= date && s.EndDateTime >= date)
+                .Where(s => s.CourtId == cid && s.StartDateTime <= date && s.EndDateTime >= date)
                 .OrderBy(s => s.StartDateTime).ToList();
             return result;
         }

@@ -29,25 +29,25 @@ namespace GeckoDAL
 
         public static Court GetCourtById(int id)
         {
-            Court result = GetAllNotDeletedCourts().Where(c => c.CourtID == id).SingleOrDefault();
+            Court result = GetAllNotDeletedCourts().Where(c => c.Id == id).SingleOrDefault();
             return result;
         }
 
         public static List<Court> GetAllOccupiedCourtsByDateTime(DateTime dt)
         {
             List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
-            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtCourtID);
+            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
 
-            List<Court> result = GetAllNotDeletedCourts().Where(c => occupiedCourtID.Contains(c.CourtID)).ToList();
+            List<Court> result = GetAllNotDeletedCourts().Where(c => occupiedCourtID.Contains(c.Id)).ToList();
             return result;
         }
 
         public static List<Court> GetAllAvailableCourtsByDateTime(DateTime dt)
         {
             List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
-            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtCourtID);
+            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
 
-            List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtID.Contains(c.CourtID)).ToList();
+            List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtID.Contains(c.Id)).ToList();
             return result;
         }        
     }

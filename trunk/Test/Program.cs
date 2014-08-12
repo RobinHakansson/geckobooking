@@ -41,7 +41,7 @@ namespace Test
             List<Court> courts = CourtDB.GetAllAvailableCourtsByDateTime(new DateTime(2014,08,05,10,00,00));
             foreach (var item in courts)
             {
-                Console.WriteLine("CourtID: {0}, Courtname: {1}", item.CourtID, item.Name);
+                Console.WriteLine("CourtID: {0}, Courtname: {1}", item.Id, item.Name);
             }
 
             // << DELETE >>
