@@ -217,6 +217,7 @@ header.full {
     display:inline-block;
     vertical-align:top;
     float: left;
+    width: 256px;
 }
 #right-box {
     display:inline-block;
