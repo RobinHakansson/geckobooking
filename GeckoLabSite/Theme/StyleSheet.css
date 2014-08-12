@@ -9,7 +9,7 @@
 header, li, a, img {
   transition: all 0.25s;
   -moz-transition: all 0.25s; /* Firefox 4 */
-  -webkit-transition: all 0.25s; /* Safari and Chrome */
+  -webkit-transition: all 0s; /* Safari and Chrome */
   -o-transition: all 0.25s; /* Opera */
 
   text-decoration: none;
@@ -71,7 +71,7 @@ header.full {
     font-family: 'Razer Header Regular', Verdana, Arial, Helvetica, sans-serif;
     padding: 15px 30px;
     border-left: 3px solid white;
-    margin-top: 5px;
+    margin-top: 2px;
     }
 
     .menu-item a {
