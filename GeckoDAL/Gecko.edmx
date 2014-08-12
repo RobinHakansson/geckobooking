@@ -25,20 +25,27 @@
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
-      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+    <Property Name="IsLockedOut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LockedOutDate" Type="datetime" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Courts">
     <Key>
-      <PropertyRef Name="CourtID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="CourtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HourlyFee" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
@@ -46,35 +53,35 @@
   </EntityType>
   <EntityType Name="Bookings">
     <Key>
-      <PropertyRef Name="BookingID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BookingDate" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TotalCost" Type="decimal" Nullable="false" />
     <Property Name="IsDeleted" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserUserID" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Sessions">
     <Key>
-      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StartDateTime" Type="datetime" Nullable="false" />
     <Property Name="EndDateTime" Type="datetime" Nullable="false" />
     <Property Name="SessionCost" Type="decimal" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
-    <Property Name="BookingBookingID" Type="int" Nullable="false" />
-    <Property Name="CourtCourtID" Type="int" Nullable="false" />
+    <Property Name="BookingId" Type="int" Nullable="false" />
+    <Property Name="CourtId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserBooking">
     <End Role="User" Type="Gecko.Store.Users" Multiplicity="1" />
     <End Role="Booking" Type="Gecko.Store.Bookings" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
-        <PropertyRef Name="UserID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Booking">
-        <PropertyRef Name="UserUserID" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -83,10 +90,10 @@
     <End Role="Session" Type="Gecko.Store.Sessions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Booking">
-        <PropertyRef Name="BookingID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Session">
-        <PropertyRef Name="BookingBookingID" />
+        <PropertyRef Name="BookingId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -95,10 +102,10 @@
     <End Role="Session" Type="Gecko.Store.Sessions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Court">
-        <PropertyRef Name="CourtID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Session">
-        <PropertyRef Name="CourtCourtID" />
+        <PropertyRef Name="CourtId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -126,21 +133,28 @@
         </EntityContainer>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" />
           <Property Type="String" Name="FirstName" Nullable="false" />
           <Property Type="String" Name="LastName" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="String" Name="Phone" Nullable="false" />
-          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
           <NavigationProperty Name="Booking" Relationship="Gecko.UserBooking" FromRole="User" ToRole="Booking" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="Int32" Name="FailedPasswordAttemptCount" Nullable="false" />
+          <Property Type="String" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LockedOutDate" Nullable="true" />
+          <Property Type="String" Name="Comment" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
         </EntityType>
         <EntityType Name="Court">
           <Key>
-            <PropertyRef Name="CourtID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="CourtID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="HourlyFee" Nullable="false" />
           <Property Type="String" Name="Status" Nullable="true" />
@@ -149,39 +163,39 @@
         </EntityType>
         <EntityType Name="Booking">
           <Key>
-            <PropertyRef Name="BookingID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="BookingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="BookingDate" Nullable="false" />
           <Property Type="Decimal" Name="TotalCost" Nullable="false" />
           <Property Type="String" Name="IsDeleted" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Gecko.UserBooking" FromRole="Booking" ToRole="User" />
-          <Property Type="Int32" Name="UserUserID" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
           <NavigationProperty Name="Session" Relationship="Gecko.BookingSession" FromRole="Booking" ToRole="Session" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
-            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="SessionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="StartDateTime" Nullable="false" />
           <Property Type="DateTime" Name="EndDateTime" Nullable="false" />
           <Property Type="Decimal" Name="SessionCost" Nullable="false" />
           <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
           <NavigationProperty Name="Booking" Relationship="Gecko.BookingSession" FromRole="Session" ToRole="Booking" />
-          <Property Type="Int32" Name="BookingBookingID" Nullable="false" />
+          <Property Type="Int32" Name="BookingId" Nullable="false" />
           <NavigationProperty Name="Court" Relationship="Gecko.CourtSession" FromRole="Session" ToRole="Court" />
-          <Property Type="Int32" Name="CourtCourtID" Nullable="false" />
+          <Property Type="Int32" Name="CourtId" Nullable="false" />
         </EntityType>
         <Association Name="UserBooking">
           <End Type="Gecko.User" Role="User" Multiplicity="1" />
           <End Type="Gecko.Booking" Role="Booking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Booking">
-              <PropertyRef Name="UserUserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,10 +204,10 @@
           <End Type="Gecko.Session" Role="Session" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Booking">
-              <PropertyRef Name="BookingID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Session">
-              <PropertyRef Name="BookingBookingID" />
+              <PropertyRef Name="BookingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -202,10 +216,10 @@
           <End Type="Gecko.Session" Role="Session" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Court">
-              <PropertyRef Name="CourtID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Session">
-              <PropertyRef Name="CourtCourtID" />
+              <PropertyRef Name="CourtId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -218,11 +232,18 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="IsTypeOf(Gecko.User)">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="LockedOutDate" ColumnName="LockedOutDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -230,7 +251,7 @@
     <EntitySetMapping Name="Courts">
       <EntityTypeMapping TypeName="IsTypeOf(Gecko.Court)">
         <MappingFragment StoreEntitySet="Courts">
-          <ScalarProperty Name="CourtID" ColumnName="CourtID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="HourlyFee" ColumnName="HourlyFee" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -241,24 +262,24 @@
     <EntitySetMapping Name="Bookings">
       <EntityTypeMapping TypeName="IsTypeOf(Gecko.Booking)">
         <MappingFragment StoreEntitySet="Bookings">
-          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
           <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="UserUserID" ColumnName="UserUserID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sessions">
       <EntityTypeMapping TypeName="IsTypeOf(Gecko.Session)">
         <MappingFragment StoreEntitySet="Sessions">
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
           <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
           <ScalarProperty Name="SessionCost" ColumnName="SessionCost" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="BookingBookingID" ColumnName="BookingBookingID" />
-          <ScalarProperty Name="CourtCourtID" ColumnName="CourtCourtID" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="CourtId" ColumnName="CourtId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

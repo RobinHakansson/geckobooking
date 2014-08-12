@@ -19,11 +19,11 @@ namespace GeckoDAL
             this.Session = new HashSet<Session>();
         }
     
-        public int BookingID { get; set; }
+        public int Id { get; set; }
         public string BookingDate { get; set; }
         public decimal TotalCost { get; set; }
         public string IsDeleted { get; set; }
-        public int UserUserID { get; set; }
+        public int UserId { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<Session> Session { get; set; }

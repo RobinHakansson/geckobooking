@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/10/2014 21:22:59
--- Generated from EDMX file: C:\Users\Erica\Dropbox\GeckoProject\WebApp\GeckoLabSiteWithEntityFramework\GeckoDAL\Gecko.edmx
+-- Date Created: 08/12/2014 12:30:40
+-- Generated from EDMX file: C:\Users\Erica\Documents\EC Utbildning\17 Projekt med Robin\WebApp\GeckoLabSiteWithEntityFramework\GeckoDAL\Gecko.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -50,18 +50,25 @@ GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
-    [UserID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL,
+    [Password] nvarchar(max)  NOT NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Phone] nvarchar(max)  NOT NULL,
+    [CreatedDate] datetime  NOT NULL,
+    [FailedPasswordAttemptCount] int  NOT NULL,
+    [IsLockedOut] nvarchar(max)  NOT NULL,
+    [LockedOutDate] datetime  NULL,
+    [Comment] nvarchar(max)  NOT NULL,
     [IsDeleted] bit  NOT NULL
 );
 GO
 
 -- Creating table 'Courts'
 CREATE TABLE [dbo].[Courts] (
-    [CourtID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [HourlyFee] nvarchar(max)  NOT NULL,
     [Status] nvarchar(max)  NULL,
@@ -71,23 +78,23 @@ GO
 
 -- Creating table 'Bookings'
 CREATE TABLE [dbo].[Bookings] (
-    [BookingID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [BookingDate] nvarchar(max)  NOT NULL,
     [TotalCost] decimal(18,0)  NOT NULL,
     [IsDeleted] nvarchar(max)  NOT NULL,
-    [UserUserID] int  NOT NULL
+    [UserId] int  NOT NULL
 );
 GO
 
 -- Creating table 'Sessions'
 CREATE TABLE [dbo].[Sessions] (
-    [SessionID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [StartDateTime] datetime  NOT NULL,
     [EndDateTime] datetime  NOT NULL,
     [SessionCost] decimal(18,0)  NOT NULL,
     [IsDeleted] bit  NOT NULL,
-    [BookingBookingID] int  NOT NULL,
-    [CourtCourtID] int  NOT NULL
+    [BookingId] int  NOT NULL,
+    [CourtId] int  NOT NULL
 );
 GO
 
@@ -95,74 +102,74 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [UserID] in table 'Users'
+-- Creating primary key on [Id] in table 'Users'
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [PK_Users]
-    PRIMARY KEY CLUSTERED ([UserID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [CourtID] in table 'Courts'
+-- Creating primary key on [Id] in table 'Courts'
 ALTER TABLE [dbo].[Courts]
 ADD CONSTRAINT [PK_Courts]
-    PRIMARY KEY CLUSTERED ([CourtID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [BookingID] in table 'Bookings'
+-- Creating primary key on [Id] in table 'Bookings'
 ALTER TABLE [dbo].[Bookings]
 ADD CONSTRAINT [PK_Bookings]
-    PRIMARY KEY CLUSTERED ([BookingID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [SessionID] in table 'Sessions'
+-- Creating primary key on [Id] in table 'Sessions'
 ALTER TABLE [dbo].[Sessions]
 ADD CONSTRAINT [PK_Sessions]
-    PRIMARY KEY CLUSTERED ([SessionID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [UserUserID] in table 'Bookings'
+-- Creating foreign key on [UserId] in table 'Bookings'
 ALTER TABLE [dbo].[Bookings]
 ADD CONSTRAINT [FK_UserBooking]
-    FOREIGN KEY ([UserUserID])
+    FOREIGN KEY ([UserId])
     REFERENCES [dbo].[Users]
-        ([UserID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserBooking'
 CREATE INDEX [IX_FK_UserBooking]
 ON [dbo].[Bookings]
-    ([UserUserID]);
+    ([UserId]);
 GO
 
--- Creating foreign key on [BookingBookingID] in table 'Sessions'
+-- Creating foreign key on [BookingId] in table 'Sessions'
 ALTER TABLE [dbo].[Sessions]
 ADD CONSTRAINT [FK_BookingSession]
-    FOREIGN KEY ([BookingBookingID])
+    FOREIGN KEY ([BookingId])
     REFERENCES [dbo].[Bookings]
-        ([BookingID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_BookingSession'
 CREATE INDEX [IX_FK_BookingSession]
 ON [dbo].[Sessions]
-    ([BookingBookingID]);
+    ([BookingId]);
 GO
 
--- Creating foreign key on [CourtCourtID] in table 'Sessions'
+-- Creating foreign key on [CourtId] in table 'Sessions'
 ALTER TABLE [dbo].[Sessions]
 ADD CONSTRAINT [FK_CourtSession]
-    FOREIGN KEY ([CourtCourtID])
+    FOREIGN KEY ([CourtId])
     REFERENCES [dbo].[Courts]
-        ([CourtID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_CourtSession'
 CREATE INDEX [IX_FK_CourtSession]
 ON [dbo].[Sessions]
-    ([CourtCourtID]);
+    ([CourtId]);
 GO
 
 -- --------------------------------------------------

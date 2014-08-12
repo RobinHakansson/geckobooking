@@ -19,7 +19,7 @@ namespace GeckoDAL
             this.Session = new HashSet<Session>();
         }
     
-        public int CourtID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string HourlyFee { get; set; }
         public string Status { get; set; }
