@@ -14,13 +14,13 @@ namespace GeckoDAL
     
     public partial class Session
     {
-        public int SessionID { get; set; }
+        public int Id { get; set; }
         public System.DateTime StartDateTime { get; set; }
         public System.DateTime EndDateTime { get; set; }
         public decimal SessionCost { get; set; }
         public bool IsDeleted { get; set; }
-        public int BookingBookingID { get; set; }
-        public int CourtCourtID { get; set; }
+        public int BookingId { get; set; }
+        public int CourtId { get; set; }
     
         public virtual Booking Booking { get; set; }
         public virtual Court Court { get; set; }

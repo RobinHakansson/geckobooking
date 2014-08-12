@@ -19,11 +19,18 @@ namespace GeckoDAL
             this.Booking = new HashSet<Booking>();
         }
     
-        public int UserID { get; set; }
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int FailedPasswordAttemptCount { get; set; }
+        public string IsLockedOut { get; set; }
+        public Nullable<System.DateTime> LockedOutDate { get; set; }
+        public string Comment { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<Booking> Booking { get; set; }
