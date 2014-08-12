@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMasterPage.master.cs" Inherits="SiteMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Gecko Labs</title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Oxygen|Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <link type="text/css" href="Theme/Reset.css" rel="stylesheet" />
+    <link type="text/css" href="Theme/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript" src="../JavaScript/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="../JavaScript/jquery-ui-1-11-0/jquery-ui.min.js"></script>
+    <link type="text/css" href="JavaScript/jquery-ui-1-11-0/jquery-ui.min.css" rel="stylesheet" />
+    <link type="text/css" href="JavaScript/jquery-ui-1-11-0/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link type="text/css" href="JavaScript/jquery-ui-1-11-0/jquery-ui.structure.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../JavaScript/Copyright-year.js"></script>
+    <script type="text/javascript" src="../JavaScript/menu-resize.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header id="menu" class="full">
+            <a href="Default.aspx">
+                <div id="logo-box">
+                    <img id="logo" src="../Theme/Images/Gecko-logo.png" />
+                    <%--<img id="logo-text" src="../Theme/Images/logo-text.png" />--%>
+                </div>
+            </a>
+            <ul id="menu-list">
+                <li class="menu-item"><a href="Home.aspx">Home</a></li>                
+                <li class="menu-item"><a href="Home.aspx">Products</a></li>                
+                <li class="menu-item"><a href="Lab.aspx">Lab</a></li>                
+                <li class="menu-item"><a href="Home.aspx">Contact us</a></li>                
+            </ul>
+            <%--<ul id="menu-list">
+                <li class="menu-item"><a href="Home.aspx">Home</a></li>
+                <li class="menu-item-separator"></li>
+                <li class="menu-item"><a href="Home.aspx">Products</a></li>
+                <li class="menu-item-separator"></li>
+                <li class="menu-item"><a href="Lab.aspx">Lab</a></li>
+                <li class="menu-item-separator"></li>
+                <li class="menu-item"><a href="Home.aspx">Contact us</a></li>
+                <li class="menu-item-separator" style="display:inline-block;"></li>
+                <li class="menu-item" style="display:inline-block;"><a href="#">&#183;&#183;&#183;</a></li>
+            </ul>--%>
+
+            <div id="collapsed-menu-box">
+                <ul id="collapsed-menu-list">
+                </ul>
+            </div>
+
+            <!-- <p id="date"></p> -->
+        </header>
+
+        <div id="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+
+        <footer id="footer"></footer>
+    </form>
+</body>
+</html>
