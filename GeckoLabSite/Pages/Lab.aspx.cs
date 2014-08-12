@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using GeckoDAL;
 
 public partial class Pages_Lab : System.Web.UI.Page
 {
@@ -16,6 +17,10 @@ public partial class Pages_Lab : System.Web.UI.Page
         Label1.Text = string.Empty;
         Label2.Text = string.Empty;
         Label3.Text = string.Empty;
+
+
+        GridView1.DataSource = CourtDB.GetAllCourts();
+        GridView1.DataBind();
 
         //Label1.Text = System.Configuration.ConfigurationManager.ConnectionStrings[1].ConnectionString;
 

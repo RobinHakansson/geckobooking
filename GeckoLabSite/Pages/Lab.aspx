@@ -57,8 +57,7 @@
         </div>
 
         <div id="booking-box">
-
-
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         </div>
 
     </div>

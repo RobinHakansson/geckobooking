@@ -12,15 +12,15 @@ namespace GeckoDAL
 
         private static IEnumerable<Court> GetAllNotDeletedCourts()
         {
-            //return Context.Courts.Where(c => !c.IsDeleted);
-            return Context.Courts.Where(Hej);
+            return Context.Courts.Where(c => !c.IsDeleted);
+            //return Context.Courts.Where(Hej);
         }
 
         //Illustrating lambda-expression
-        private static bool Hej(Court c)
-        {
-            return !c.IsDeleted;
-        }
+        //private static bool Hej(Court c)
+        //{
+        //    return !c.IsDeleted;
+        //}
 
         public static List<Court> GetAllCourts()
         {
@@ -49,6 +49,15 @@ namespace GeckoDAL
 
             List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtID.Contains(c.Id)).ToList();
             return result;
-        }        
+        }
+
+        public static bool[] CourtVacancyByDatetime(DateTime date)
+        {
+            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(date);
+            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
+
+            var result = GetAllNotDeletedCourts().Select(c => !occupiedCourtID.Contains(c.Id)).ToArray();
+            return result;
+        }
     }
 }
