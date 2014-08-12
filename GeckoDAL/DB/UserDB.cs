@@ -13,7 +13,7 @@ namespace GeckoDAL
     {
         public override string ToString()
         {
-            string result = string.Format("UserID: {0}", UserID);
+            string result = string.Format("UserID: {0}", Id);
             result += string.Format("\r\nFirstName: {0}", FirstName);
             result += string.Format("\r\nLastName: {0}", LastName);
             result += string.Format("\r\nEmail: {0}", Email);
@@ -61,7 +61,7 @@ namespace GeckoDAL
             {
                 connection.Open();
 
-                StringBuilder sqlquery = new StringBuilder("SELECT [UserID],[FirstName],[LastName],[Email],[Phone],[IsDeleted]");
+                StringBuilder sqlquery = new StringBuilder("SELECT [Id],[FirstName],[LastName],[Email],[Phone],[IsDeleted]");
                 sqlquery.Append("FROM [dbo].[Users]");
                 sqlquery.Append("WHERE [LastName] LIKE '%L%' OR [LastName] LIKE '%l%'");
 
@@ -79,7 +79,7 @@ namespace GeckoDAL
                         {
                             DataRow row = dataset.Tables[0].Rows[i];
                             User user = new User() { 
-                                UserID = int.Parse(row["UserID"].ToString().Trim()), //Trim removes blanks before and after
+                                Id = int.Parse(row["Id"].ToString().Trim()), //Trim removes blanks before and after
                                 FirstName = row["FirstName"].ToString().Trim(),
                                 LastName = row["LastName"].ToString().Trim(),
                                 Email = row["Email"].ToString().Trim(),
@@ -96,7 +96,7 @@ namespace GeckoDAL
 
         public static User GetUserById(int id)
         {
-            var result = GetAllNotDeletedUsers().Where(u => u.UserID == id).SingleOrDefault();
+            var result = GetAllNotDeletedUsers().Where(u => u.Id == id).SingleOrDefault();
             return result;
         }
 
@@ -109,7 +109,7 @@ namespace GeckoDAL
 
         public static int UpdateUser(User user)
         {
-            User userToUpdate = GetUserById(user.UserID);
+            User userToUpdate = GetUserById(user.Id);
             userToUpdate.FirstName = user.FirstName;
             userToUpdate.LastName = user.LastName;
             userToUpdate.Email = user.Email;
