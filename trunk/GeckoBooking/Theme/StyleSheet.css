@@ -1,0 +1,267 @@
+﻿body {
+    margin:0;
+    margin-top:10px;
+    /* background-color: #A5C5AF; */
+    background-image:url(Images/img-noise-361x370.png)
+}
+
+/* transform timers */
+header, li, a, img {
+  transition: all 0.25s;
+  -moz-transition: all 0.25s; /* Firefox 4 */
+  -webkit-transition: all 0s; /* Safari and Chrome */
+  -o-transition: all 0.25s; /* Opera */
+
+  text-decoration: none;
+}
+
+header.full {
+    width: 100%;
+    height: 80px;
+    background-color: #AA7570;
+    text-align: center;
+    -moz-box-shadow: 0px 0px 2px rgba(0,0,0,0.55);
+    -khtml-box-shadow: 0px 0px 2px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.55);
+    margin-bottom: 20px;
+    position:fixed;
+    top: 20px;
+    z-index:9999;
+
+}
+    header.full #logo-box {    
+        display: inline-block;
+        vertical-align: top;
+        float:left;
+        margin-left: 10px;
+    }
+
+    /* Logo */
+    header.full #logo {        
+        width: 220px;
+        height: 200px;
+        display: inline-block;
+        vertical-align: top;
+        position: Fixed;
+        left: 20px;
+        top: 15px;
+    }
+    header.full #logo-text {
+        display: inline-block;
+        position: fixed;
+        left: 250px;
+        /*top: 20px;*/
+    }
+
+
+    #menu-list {
+    display:inline-block;
+    vertical-align:middle;
+    /*text-align: center;*/
+    }
+
+    .menu-item {
+    min-width: 150px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle; 
+    color: #fff;
+    font-size: 32px;
+    /*font-family: 'Oxygen', 'Open Sans', 'Droid Sans', sans-serif;*/
+    font-family: 'Razer Header Regular', Verdana, Arial, Helvetica, sans-serif;
+    padding: 15px 30px;
+    border-left: 3px solid white;
+    margin-top: 2px;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #fff;
+        display: inline-block;
+        vertical-align: middle;
+        /*width: 100%;
+        height: 100%;*/
+        text-shadow:2px 2px #000000;
+    }
+
+        .menu-item a:hover {
+            color: #3cbce6; 
+            /*color: #3D4048;*/
+        }
+
+    
+
+.menu-item-separator
+{
+    width: 2px;
+    height: 30px;
+    margin-top: 10px;
+    display:inline-block;
+    vertical-align: middle;
+    border-radius:2px;
+    background-color:#fff;
+}
+
+
+    /* Sizes for the smaller menu */
+    header.small {
+         width: 100%;
+        height: 30px;
+        background-color: #AA7570;
+        text-align: center;
+        -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+        -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+        -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+        position:fixed;
+        top: 0px;
+        z-index:9999;
+        font-size:10px;
+    }
+    
+    header.small img#logo-text{ 
+        display:none;     
+    }
+    
+    header.small img#logo{ 
+        width: 80px;
+        height: 75px;
+        display: inline-block;
+        position: fixed;
+        left: 5%;
+        top:2px;
+    }
+
+
+    header.small li.menu-item
+    {
+        min-width: 150px;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle; 
+        color: #fff;
+        font-size: 24px;
+        font-family: 'Razer Header Regular', Verdana, Arial, Helvetica, sans-serif;
+        padding: 0px 20px 0px 20px;
+    }
+    
+    header.small li.menu-item-separator
+    {
+        width: 2px;
+        height: 20px;
+        margin-top:5px;
+        display:inline-block;
+        border-radius:2px;
+        background-color:#fff;
+    }
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+.ellipse {
+    cursor: pointer;
+}
+
+#collapsed-menu-box {
+    background-color:gray;
+    border: 2px dashed black; 
+    float: right;
+}
+
+
+
+
+
+
+/* MainBox */
+#main-content {
+    background-color: white;
+    border-radius: 8px;
+    height: 2000px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding:20px;
+    -moz-box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    -khtml-box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    font-family: 'Droid Sans', 'Oxygen', 'Open Sans', sans-serif;
+    /*font-family: 'Razer Text Regular', Arial, Helvetica, sans-serif;*/
+}
+
+    #main-content .center {
+    text-align:center;
+    margin: 0 auto;
+    }
+
+    #main-content h1 {
+    /*font-family: 'Razer Text Regular', Arial, Helvetica, sans-serif;*/
+    
+    }
+
+    #main-content .vertline-center {
+    display:inline-block;
+    vertical-align:middle;
+    }
+
+
+#pass-test-box {
+}
+#booking-test-box {   
+}
+
+#left-box {
+    display:inline-block;
+    vertical-align:top;
+    float: left;
+    width: 256px;
+}
+#right-box {
+    display:inline-block;
+    vertical-align:top;
+    float: right;
+}
+
+#image-box {
+float:right;
+border: 1px dotted black;
+height:300px;
+width:300px;
+}
+
+#image-box-center
+{
+    margin: 0 auto;
+    border:1px dotted black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+    color: #3D4048;
+    font-family: 'Razer Header Regular', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;    
+    text-align: center;
+}
+
+#calendar-icon {
+cursor:pointer;
+}
+
+#datepicker {
+margin-top:20px;
+}
+
+#booking-box {
+    display: inline-block;
+    width: 100%;
+    height: 250px;
+    background-color: lightblue;
+    border-radius: 8px;
+}
+
+#footer {
+    margin: 30px auto;
+    text-align:center;
+}
