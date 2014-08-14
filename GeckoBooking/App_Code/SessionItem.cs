@@ -12,10 +12,10 @@ namespace GeckoBooking
         {
             CourtVacancy = CourtDB.CourtVacancyByDatetime(date);
 
-            SessionTime = date.TimeOfDay.ToString();
+            SessionTime = date;
         }
 
-        public string SessionTime { get; set; }
+        public DateTime SessionTime { get; set; }
         public bool[] CourtVacancy { get; set; }
 
         public static DateTime DaySessionStartTime = DateTime.Parse("08:00");

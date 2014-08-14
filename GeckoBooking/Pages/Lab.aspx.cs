@@ -21,20 +21,38 @@ namespace GeckoBooking
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            var courts = CourtDB.GetAllCourts();
+
+            TableHeaderRow tbHeaderRow = new TableHeaderRow();
+
+            TableHeaderCell tbHeaderTimeCell = new TableHeaderCell();
+            tbHeaderRow.Cells.Add(tbHeaderTimeCell);
+
+
+            for (int i = 0; i < courts.Count; i++)
+            {
+                TableHeaderCell tbHeaderCell = new TableHeaderCell();
+                tbHeaderCell.Text = courts[i].Name;
+                tbHeaderRow.Cells.Add(tbHeaderCell);
+            }
+            
+
+            Table1.Rows.Add(tbHeaderRow);
+
             for (int i = 0; i < SessionItem.OpenTimeSpan.Hours; i++)
             {
                 DateTime dateTime = DateTime.Parse(TextBox2.Text+" "+(SessionItem.DaySessionStartTime.Hour+i)+":00:00");
                 SessionItem sessionItem = new SessionItem(dateTime);
                 TableRow trRow = new TableRow();
                 TableCell timeCell = new TableCell();
-                timeCell.Text = sessionItem.SessionTime;
+                timeCell.Text = sessionItem.SessionTime.ToShortTimeString().TrimEnd(':');
                 trRow.Cells.Add(timeCell);
-                for (int j = 0; j < CourtDB.GetAllCourts().Count; j++)
+                for (int j = 0; j < courts.Count; j++)
                 {
                     TableCell tableCell = new TableCell();
                     trRow.Cells.Add(tableCell);
 
-                    var checkBox = new CheckBox(){Checked = sessionItem.CourtVacancy[j]};
+                    var checkBox = new CheckBox(){Visible = sessionItem.CourtVacancy[j]};
 
                     
                     ((IParserAccessor)tableCell).AddParsedSubObject(checkBox);
