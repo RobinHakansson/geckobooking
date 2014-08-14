@@ -18,5 +18,12 @@ namespace GeckoBooking
         public string SessionTime { get; set; }
         public bool[] CourtVacancy { get; set; }
 
+        public static DateTime DaySessionStartTime = DateTime.Parse("08:00");
+        public static DateTime DaySessionEndTime = DateTime.Parse("22:00");
+
+        public static TimeSpan OpenTimeSpan
+        {
+            get { return DaySessionEndTime - DaySessionStartTime; }
+        }
     }
 }

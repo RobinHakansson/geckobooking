@@ -108,6 +108,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\BookableCourtColumn.cs" />
     <Compile Include="Pages\Lab.aspx.cs">
       <DependentUpon>Lab.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
