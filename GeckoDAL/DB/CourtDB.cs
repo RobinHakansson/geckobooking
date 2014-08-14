@@ -29,34 +29,34 @@ namespace GeckoDAL
 
         public static Court GetCourtById(int id)
         {
-            Court result = GetAllNotDeletedCourts().Where(c => c.Id == id).SingleOrDefault();
+            Court result = GetAllNotDeletedCourts().SingleOrDefault(c => c.Id == id);
             return result;
         }
 
         public static List<Court> GetAllOccupiedCourtsByDateTime(DateTime dt)
         {
             List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
-            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
+            IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
-            List<Court> result = GetAllNotDeletedCourts().Where(c => occupiedCourtID.Contains(c.Id)).ToList();
+            List<Court> result = GetAllNotDeletedCourts().Where(c => occupiedCourtId.Contains(c.Id)).ToList();
             return result;
         }
 
         public static List<Court> GetAllAvailableCourtsByDateTime(DateTime dt)
         {
             List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
-            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
+            IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
-            List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtID.Contains(c.Id)).ToList();
+            List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtId.Contains(c.Id)).ToList();
             return result;
         }
 
         public static bool[] CourtVacancyByDatetime(DateTime date)
         {
             List<Session> listSession = SessionDB.GetAllSessionsByDateTime(date);
-            IEnumerable<int> occupiedCourtID = listSession.Select(s => s.CourtId);
+            IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
-            var result = GetAllNotDeletedCourts().Select(c => !occupiedCourtID.Contains(c.Id)).ToArray();
+            var result = GetAllNotDeletedCourts().Select(c => !occupiedCourtId.Contains(c.Id)).ToArray();
             return result;
         }
     }
