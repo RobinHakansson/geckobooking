@@ -6,7 +6,7 @@
         //showAnim: "fadeIn",
         firstDay: 1,
         showWeek: true,
-        altField: "#date",
+        altField: ".date",
         altFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true,      

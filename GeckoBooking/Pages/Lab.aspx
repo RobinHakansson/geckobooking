@@ -3,7 +3,7 @@
      <script type="text/javascript" src="../JavaScript/Datepicker-v1.js"></script>
     <script type="text/javascript">
         function setDate() {
-            $("#datepicker").datepicker("setDate", new Date($("#<%=TextBox2.ClientID%>").val()));
+            $("#datepicker").datepicker("setDate", new Date($(".date").val()));
         }
     </script>
     <script type="text/javascript">
@@ -41,7 +41,7 @@
     <div id="booking-test-box">
         <div id="left-box">
             <span class="vertline-center">Date:</span> 
-            <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05" onchange="javascript: setDate();"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05" onchange="javascript: setDate();" CssClass="date"></asp:TextBox>
             <img id="calendar-icon" alt="Show calendar" src="../Theme/Images/calendar-22x21.png" class="vertline-center" />
             <br />
             <div id="datepicker"></div>
