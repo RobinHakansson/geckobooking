@@ -41,7 +41,7 @@
     <div id="booking-test-box">
         <div id="left-box">
             <span class="vertline-center">Date:</span> 
-            <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05" onchange="javascript: setDate();"></asp:TextBox>
             <img id="calendar-icon" alt="Show calendar" src="../Theme/Images/calendar-22x21.png" class="vertline-center" />
             <br />
             <div id="datepicker"></div>
