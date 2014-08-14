@@ -62,7 +62,7 @@
                     <asp:BoundField DataField="SessionTime" HeaderText="Time" />
                 </Columns>
             </asp:GridView>--%>
-            <asp:Table ID="Table1" runat="server"></asp:Table>
+            <asp:Table ID="Table1" runat="server" CssClass="bookingTable"></asp:Table>
         </div>
 
     </div>
