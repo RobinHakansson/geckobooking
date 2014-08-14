@@ -103,7 +103,9 @@
     <Content Include="Theme\Images\Svart-turkos-185x169.png" />
     <Content Include="Theme\Reset.css" />
     <Content Include="Theme\StyleSheet.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Lab.aspx.cs">
