@@ -84,8 +84,9 @@ header.full {
         text-shadow:2px 2px #000000;
     }
 
-        .menu-item a:hover {
-            color: #3cbce6; 
+        .menu-item a:hover
+        {
+            color: #3cbce6;
             /*color: #3D4048;*/
         }
 
@@ -118,7 +119,7 @@ header.full {
         font-size:10px;
     }
     
-    header.small img#logo-text{ 
+    header.small img#logo-text { 
         display:none;     
     }
     
@@ -219,17 +220,26 @@ header.full {
     float: left;
     width: 256px;
 }
+#left-box h1{
+    font-weight: bold;
+}
+#left-box p {
+    font-size: 12px;
+}
+
 #right-box {
     display:inline-block;
     vertical-align:top;
     float: right;
 }
 
-#image-box {
-float:right;
-border: 1px dotted black;
-height:300px;
-width:300px;
+#image-box
+{
+    float: right;
+    border: 1px dotted black;
+    height: 300px;
+    width: 300px;
+    background-image: url(Images/hk-badm.jpg);
 }
 
 #image-box-center
@@ -244,6 +254,8 @@ width:300px;
     font-size: 14px;    
     text-align: center;
 }
+
+/* Booking Courts */
 
 #calendar-icon {
 cursor:pointer;
@@ -263,6 +275,18 @@ margin-top:20px;
 
 .bookingTable, th, td {
     border: 1px solid black;
+    margin: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    background-color: whitesmoke; /*The color choice here affects the datepicker calender*/
+}
+
+.bookingButton {
+    margin-left: 25px;
+    margin-top: 10px;
 }
 
 #footer {

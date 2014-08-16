@@ -9,11 +9,8 @@ using GeckoDAL;
 
 namespace GeckoBooking
 {
-
     public partial class Lab : System.Web.UI.Page
     {
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,14 +25,12 @@ namespace GeckoBooking
             TableHeaderCell tbHeaderTimeCell = new TableHeaderCell();
             tbHeaderRow.Cells.Add(tbHeaderTimeCell);
 
-
             for (int i = 0; i < courts.Count; i++)
             {
                 TableHeaderCell tbHeaderCell = new TableHeaderCell();
                 tbHeaderCell.Text = courts[i].Name;
                 tbHeaderRow.Cells.Add(tbHeaderCell);
             }
-            
 
             Table1.Rows.Add(tbHeaderRow);
 
@@ -52,15 +47,12 @@ namespace GeckoBooking
                     TableCell tableCell = new TableCell();
                     trRow.Cells.Add(tableCell);
 
-                    var checkBox = new CheckBox(){Visible = sessionItem.CourtVacancy[j]};
+                    var checkBox = new CheckBox() {Visible = sessionItem.CourtVacancy[j]};
 
-                    
-                    ((IParserAccessor)tableCell).AddParsedSubObject(checkBox);
+                    ((IParserAccessor) tableCell).AddParsedSubObject(checkBox);
                 }
-
                 Table1.Rows.Add(trRow);
             }
-
         }
 
         //for (int i = 0; i < CourtDB.GetAllCourts().Count + 1; i++)
@@ -79,8 +71,6 @@ namespace GeckoBooking
         //        GridView1.Rows[i]
         //    }
         //}
-
-
 
         //GridView1.DataSource = sessions;
         //GridView1.DataBind();
@@ -101,7 +91,6 @@ namespace GeckoBooking
     //    //    else {
     //    //        checkB.Checked = false;
     //    //    }
-
     //    //}
     //    //else { 
     //    //}
