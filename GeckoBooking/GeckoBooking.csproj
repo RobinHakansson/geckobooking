@@ -97,6 +97,7 @@
     <Content Include="Theme\Images\Gecko-logo.png" />
     <Content Include="Theme\Images\gecko-v2.png" />
     <Content Include="Theme\Images\gecko-v3.png" />
+    <Content Include="Theme\Images\hk-badm.jpg" />
     <Content Include="Theme\Images\img-noise-361x370.png" />
     <Content Include="Theme\Images\logo-text.png" />
     <Content Include="Theme\Images\Mint-svart-namn.png" />

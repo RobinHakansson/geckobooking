@@ -40,14 +40,20 @@
     </div>
 
     <div id="booking-test-box">
+        <p>Enter a date or select one from below</p>
+        <br/>
         <div id="left-box">
             <span class="vertline-center">Date:</span>
             <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05" onchange="javascript: setDate();" CssClass="date"></asp:TextBox>
             <img id="calendar-icon" alt="Show calendar" src="../Theme/Images/calendar-22x21.png" class="vertline-center" />
             <br />
             <div id="datepicker"></div>
-            <p>Test</p>
-
+            <br/><br />
+            <h1>Courts for booking</h1>
+            <br/>
+            <p>B = badminton</p>
+            <p>T = tennis</p>
+            <br/>
         </div>
 
         <div id="right-box">
@@ -56,7 +62,7 @@
             </div>
         </div>
         <div id="booking-box">
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Click !" CssClass="bookingButton" OnClick="Button1_Click" />
             <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="SessionTime" HeaderText="Time" />

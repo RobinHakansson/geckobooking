@@ -13,16 +13,16 @@ GO
 
 
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('Alpha', 100.00, 'Badminton', '0')
+     VALUES ('B 01', 100.00, 'Badminton', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('Beta', 100.00, 'Badminton', '0')
+     VALUES ('B 02', 100.00, 'Badminton', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('Gamma', 100.00, 'Tennis', '0')
+     VALUES ('T 01', 150.00, 'Tennis', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('Delta', 100.00, 'Tennis', '0')
+     VALUES ('T 02', 1500.00, 'Tennis', '0')
 GO
 
 
@@ -34,13 +34,13 @@ INSERT INTO [dbo].[Bookings]([BookingDate],[TotalCost],[IsDeleted],[UserId])
 GO
 
 INSERT INTO [dbo].[Sessions]([StartDateTime],[EndDateTime],[SessionCost],[IsDeleted],[BookingId],[CourtId])
-     VALUES('2014-08-14 10:00', '2014-08-14 11:00', 100, '0', 1, 1)
+     VALUES('2014-08-16 10:00', '2014-08-16 11:00', 100, '0', 1, 1)
 GO
 INSERT INTO [dbo].[Sessions]([StartDateTime],[EndDateTime],[SessionCost],[IsDeleted],[BookingId],[CourtId])
-     VALUES('2014-08-14 9:00', '2014-08-14 10:59', 200, '0', 1, 2)
+     VALUES('2014-08-16 9:00', '2014-08-16 10:59', 200, '0', 1, 2)
 GO
 INSERT INTO [dbo].[Sessions]([StartDateTime],[EndDateTime],[SessionCost],[IsDeleted],[BookingId],[CourtId])
-     VALUES('2014-08-14 9:00', '2014-08-14 12:59', 200, '0', 2, 3)
+     VALUES('2014-08-16 9:00', '2014-08-16 12:59', 200, '0', 2, 3)
 GO
 
 
