@@ -13,16 +13,16 @@ GO
 
 
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('B 01', 100.00, 'Badminton', '0')
+     VALUES ('B', 100.00, 'Badminton', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('B 02', 100.00, 'Badminton', '0')
+     VALUES ('B', 100.00, 'Badminton', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('T 01', 150.00, 'Tennis', '0')
+     VALUES ('T', 150.00, 'Tennis', '0')
 GO
 INSERT INTO [dbo].[Courts]([Name],[HourlyFee],[Status],[IsDeleted])
-     VALUES ('T 02', 1500.00, 'Tennis', '0')
+     VALUES ('T', 150.00, 'Tennis', '0')
 GO
 
 

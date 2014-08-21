@@ -10,7 +10,7 @@
         altFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true,      
-        minDate: 0,
+        minDate: "-1Y",
         maxDate: "+2Y"
     });
 });

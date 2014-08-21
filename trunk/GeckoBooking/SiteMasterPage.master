@@ -45,10 +45,10 @@
                 <li class="menu-item" style="display:inline-block;"><a href="#">&#183;&#183;&#183;</a></li>
             </ul>--%>
 
-            <div id="collapsed-menu-box">
+            <%--<div id="collapsed-menu-box">
                 <ul id="collapsed-menu-list">
                 </ul>
-            </div>
+            </div>--%>
 
             <!-- <p id="date"></p> -->
         </header>
