@@ -5,6 +5,8 @@
     <script type="text/javascript">
         function setDate() {
             $("#datepicker").datepicker("setDate", new Date($(".date").val()));
+
+            //$("form").submit();
         }
     </script>
     <script type="text/javascript">
@@ -44,7 +46,7 @@
         <br/>
         <div id="left-box">
             <span class="vertline-center">Date:</span>
-            <asp:TextBox ID="TextBox2" runat="server" Text="2014-08-05"  onchange="javascript: setDate();" CssClass="date"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" onchange="javascript: setDate();" CssClass="date"></asp:TextBox>
             <img id="calendar-icon" alt="Show calendar" src="../Theme/Images/calendar-22x21.png" class="vertline-center" />
             <br />
             <div id="datepicker"></div>
@@ -62,7 +64,7 @@
             </div>
         </div>
         <div id="booking-box">
-            <asp:Button ID="Button1" runat="server" Text="Click !" CssClass="bookingButton" OnClick="Button1_Click" />
+            <%--<asp:Button ID="Button1" runat="server" Text="Click !" CssClass="bookingButton" OnClick="Button1_Click" />--%>
             <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_OnClick" />
             <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
                 <Columns>
@@ -73,10 +75,12 @@
             
             <asp:Label ID="CurrentDateLabel" runat="server"></asp:Label>
             <asp:Table ID="Table1" runat="server" CssClass="bookingTable"></asp:Table>
+
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <fieldset>
+                        
 
             <asp:Label ID="Label5" runat="server"></asp:Label>
                         </fieldset>

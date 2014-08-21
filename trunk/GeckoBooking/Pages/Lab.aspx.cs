@@ -14,8 +14,66 @@ namespace GeckoBooking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label5.Text = string.Empty;
+            if (!IsPostBack)
+            {
+                TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
 
-        }
+            CurrentDateLabel.Text = TextBox2.Text;
+
+
+                var courts = CourtDB.GetAllCourts();
+
+                TableHeaderRow tbHeaderRow = new TableHeaderRow();
+
+                TableHeaderCell tbHeaderTimeCell = new TableHeaderCell();
+                tbHeaderRow.Cells.Add(tbHeaderTimeCell);
+
+                for (int i = 0; i < courts.Count; i++)
+                {
+                    TableHeaderCell tbHeaderCell = new TableHeaderCell();
+                    tbHeaderCell.Text = courts[i].Name + " " + courts[i].Id;
+                    tbHeaderRow.Cells.Add(tbHeaderCell);
+                }
+
+                Table1.Rows.Add(tbHeaderRow);
+
+                for (int i = 0; i < SessionItem.OpenTimeSpan.Hours; i++)
+                {
+                    DateTime dateTime =
+                        DateTime.Parse(TextBox2.Text + " " + (SessionItem.DaySessionStartTime.Hour + i) + ":00:00");
+                    SessionItem sessionItem = new SessionItem(dateTime);
+                    TableRow trRow = new TableRow();
+                    TableCell timeCell = new TableCell();
+                    timeCell.Text = sessionItem.SessionTime.ToShortTimeString().TrimEnd(':');
+                    trRow.Cells.Add(timeCell);
+                    for (int j = 0; j < courts.Count; j++)
+                    {
+
+                        TableCell tableCell = new TableCell();
+                        if (!sessionItem.CourtVacancy[j])
+                        {
+                            tableCell.BackColor = Color.FromArgb(1, 200, 50, 50);
+                        }
+                        else
+                        {
+                            tableCell.BackColor = Color.FromArgb(1, 0, 250, 0);
+                        }
+                        trRow.Cells.Add(tableCell);
+
+
+                        var checkBox = new CheckBox()
+                        {
+                            Visible = sessionItem.CourtVacancy[j],
+                            ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':')
+                        };
+                        ((IParserAccessor) tableCell).AddParsedSubObject(checkBox);
+                    }
+                    Table1.Rows.Add(trRow);
+                }
+            }
+        
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -60,11 +118,12 @@ namespace GeckoBooking
                     }
                     trRow.Cells.Add(tableCell);
 
-
                     var checkBox = new CheckBox()
                     {
                         Visible = sessionItem.CourtVacancy[j],
-                        ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':')
+                        ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
+                        
+                        
                     };
 
                     ((IParserAccessor) tableCell).AddParsedSubObject(checkBox);
@@ -88,7 +147,8 @@ namespace GeckoBooking
 
         protected void Button2_OnClick(object sender, EventArgs e)
         {
-            Label5.Text = "Test: ";
+            Label5.Text = DateTime.Now.ToString();
+            Label5.Text += " Test: ";
             IEnumerable<Control> cbList = GetAllControls(Page);
 
 
@@ -100,7 +160,11 @@ namespace GeckoBooking
             {
                 if (ctrl.GetType() == typeof (CheckBox))
                 {
-                    Label5.Text += ctrl.ID + " ";
+                    var cbBox = (CheckBox) ctrl;
+                    if (!cbBox.Checked)
+                    {
+                        Label5.Text += ctrl.ID + " ";
+                    }
                 }
             }
 
