@@ -15,6 +15,7 @@ namespace GeckoBooking
         protected void Page_Load(object sender, EventArgs e)
         {
             Label5.Text = string.Empty;
+
             if (!IsPostBack)
             {
                 TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -22,7 +23,8 @@ namespace GeckoBooking
 
             CurrentDateLabel.Text = TextBox2.Text;
 
-
+            if (1 == 2)
+            {
                 var courts = CourtDB.GetAllCourts();
 
                 TableHeaderRow tbHeaderRow = new TableHeaderRow();
@@ -54,7 +56,7 @@ namespace GeckoBooking
                         TableCell tableCell = new TableCell();
                         if (!sessionItem.CourtVacancy[j])
                         {
-                            tableCell.BackColor = Color.FromArgb(1, 200, 50, 50);
+                            tableCell.BackColor = Color.FromArgb(1, 250, 0, 0);
                         }
                         else
                         {
@@ -62,18 +64,45 @@ namespace GeckoBooking
                         }
                         trRow.Cells.Add(tableCell);
 
+                        var upPanel = new UpdatePanel()
+                        {
+                            ID =
+                                "UpdatePanel-" + courts[j].Id + "-" +
+                                sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
+                            UpdateMode = UpdatePanelUpdateMode.Conditional
+                        };
+
+
 
                         var checkBox = new CheckBox()
                         {
                             Visible = sessionItem.CourtVacancy[j],
-                            ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':')
+                            ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
+                            AutoPostBack = true
                         };
-                        ((IParserAccessor) tableCell).AddParsedSubObject(checkBox);
+
+
+                        //checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
+
+                        upPanel.ContentTemplateContainer.Controls.Add(checkBox);
+
+                        //upPanel.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
+                        ((IParserAccessor) tableCell).AddParsedSubObject(upPanel);
+
                     }
+
                     Table1.Rows.Add(trRow);
                 }
             }
-        
+
+        }
+
+        protected void MyCheckedChanged(object sender, EventArgs e)
+        {
+
+            CheckBox checkBox = (CheckBox) sender;
+            checkBox.Checked = true;
+        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -110,7 +139,7 @@ namespace GeckoBooking
                     TableCell tableCell = new TableCell();
                     if (!sessionItem.CourtVacancy[j])
                     {
-                        tableCell.BackColor = Color.FromArgb(1, 200, 50, 50);
+                        tableCell.BackColor = Color.FromArgb(1, 250, 0, 0);
                     }
                     else
                     {
@@ -118,16 +147,34 @@ namespace GeckoBooking
                     }
                     trRow.Cells.Add(tableCell);
 
+                    //var upPanel = new UpdatePanel()
+                    //{
+                    //    ID =
+                    //        "UpdatePanel-" + courts[j].Id + "-" +
+                    //        sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
+                    //    UpdateMode = UpdatePanelUpdateMode.Conditional
+                    //};
+
+
+
                     var checkBox = new CheckBox()
                     {
                         Visible = sessionItem.CourtVacancy[j],
-                        ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
-                        
-                        
+                        ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':')
+                        //,
+                        //AutoPostBack = true
                     };
 
-                    ((IParserAccessor) tableCell).AddParsedSubObject(checkBox);
+
+                    checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
+
+                    //upPanel.ContentTemplateContainer.Controls.Add(checkBox);
+
+                    //upPanel.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
+                    ((IParserAccessor)tableCell).AddParsedSubObject(checkBox);
+
                 }
+
                 Table1.Rows.Add(trRow);
             }
         }
@@ -145,6 +192,7 @@ namespace GeckoBooking
             }
         }
 
+
         protected void Button2_OnClick(object sender, EventArgs e)
         {
             Label5.Text = DateTime.Now.ToString();
@@ -153,15 +201,13 @@ namespace GeckoBooking
 
 
             var enumerable = cbList as IList<Control> ?? cbList.ToList();
-
-
-
+            
             foreach (var ctrl in enumerable)
             {
                 if (ctrl.GetType() == typeof (CheckBox))
                 {
                     var cbBox = (CheckBox) ctrl;
-                    if (!cbBox.Checked)
+                    if (cbBox.Checked)
                     {
                         Label5.Text += ctrl.ID + " ";
                     }

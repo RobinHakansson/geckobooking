@@ -21,6 +21,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <header id="menu" class="full">
             <a href="Default.aspx">
                 <div id="logo-box">
