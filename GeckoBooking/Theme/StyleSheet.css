@@ -284,6 +284,12 @@ margin-top:20px;
     background-color: whitesmoke; /*The color choice here affects the datepicker calender*/
 }
 
+.selectedDateText {
+    margin-left: 20px;
+padding-top: 20px;
+display: inline-block;
+}
+
 .bookingButton {
     margin-left: 25px;
     margin-top: 10px;

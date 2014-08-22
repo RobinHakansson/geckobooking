@@ -52,7 +52,7 @@ $(window).resize(function () {
 
 
 $(document).on("scroll", function () {
-    if ($(document).scrollTop() > 100) {
+    if ($(document).scrollTop() > 50) {
         $("header").removeClass("full").addClass("small");
     } else {
         $("header").removeClass("small").addClass("full");

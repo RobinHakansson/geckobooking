@@ -25,7 +25,7 @@
         <header id="menu" class="full">
             <a href="Default.aspx">
                 <div id="logo-box">
-                    <img id="logo" src="../Theme/Images/Gecko-logo.png" />
+                    <%--<img id="logo" src="../Theme/Images/Gecko-logo.png" />--%>
                     <%--<img id="logo-text" src="../Theme/Images/logo-text.png" />--%>
                 </div>
             </a>

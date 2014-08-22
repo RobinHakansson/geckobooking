@@ -21,7 +21,7 @@ namespace GeckoBooking
                 TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
-            CurrentDateLabel.Text = TextBox2.Text;
+            //CurrentDateLabel.Text = TextBox2.Text;
 
             if (IsPostBack)
             {
@@ -115,7 +115,7 @@ namespace GeckoBooking
 
         protected void CreateTable()
         {
-            CurrentDateLabel.Text = TextBox2.Text;
+            CurrentDateLabel.Text = "Selected date: "+TextBox2.Text;
 
             var courts = CourtDB.GetAllCourts();
 
