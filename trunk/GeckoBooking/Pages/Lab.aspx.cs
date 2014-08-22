@@ -23,6 +23,13 @@ namespace GeckoBooking
 
             CurrentDateLabel.Text = TextBox2.Text;
 
+            if (IsPostBack)
+            {
+                
+                CreateTable();
+                Button1_OnClick(Page,e);
+            }
+
             if (1 == 2)
             {
                 var courts = CourtDB.GetAllCourts();
@@ -104,7 +111,9 @@ namespace GeckoBooking
             checkBox.Checked = true;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        
+
+        protected void CreateTable()
         {
             CurrentDateLabel.Text = TextBox2.Text;
 
@@ -160,22 +169,26 @@ namespace GeckoBooking
                     var checkBox = new CheckBox()
                     {
                         Visible = sessionItem.CourtVacancy[j],
-                        ID = courts[j].Id + "-" + sessionItem.SessionTime.ToShortTimeString().TrimEnd(':')
+                        ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray())
                         //,
                         //AutoPostBack = true
                     };
 
 
-                    checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
+                    //checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
 
                     //upPanel.ContentTemplateContainer.Controls.Add(checkBox);
 
                     //upPanel.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
+                    //UpdatePanel2.Triggers.Add(new PostBackTrigger() { ControlID = checkBox.ID });
+                   
                     ((IParserAccessor)tableCell).AddParsedSubObject(checkBox);
+
 
                 }
 
                 Table1.Rows.Add(trRow);
+                
             }
         }
 
@@ -197,7 +210,7 @@ namespace GeckoBooking
         {
             Label5.Text = DateTime.Now.ToString();
             Label5.Text += " Test: ";
-            IEnumerable<Control> cbList = GetAllControls(Page);
+            IEnumerable<Control> cbList = GetAllControls(Table1);
 
 
             var enumerable = cbList as IList<Control> ?? cbList.ToList();
@@ -215,6 +228,25 @@ namespace GeckoBooking
             }
 
 
+        }
+
+        protected void Button1_OnClick(object sender, EventArgs e)
+        {
+            IEnumerable<Control> cbList = GetAllControls(Page);
+
+            var enumerable = cbList as IList<Control> ?? cbList.ToList();
+
+            foreach (var ctrl in enumerable)
+            {
+                if (ctrl.GetType() == typeof(CheckBox))
+                {
+                    var cbBox = (CheckBox)ctrl;
+                    if (cbBox.Checked)
+                    {
+                        cbBox.Checked = false;
+                    }
+                }
+            }
         }
     }
 }

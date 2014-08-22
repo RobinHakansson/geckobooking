@@ -5,7 +5,7 @@
         //buttonImageOnly: true,
         //showAnim: "fadeIn",
         onSelect: function() {
-            //$("form").submit();
+            $("form").submit();
             //$(".date").val();
         },
         firstDay: 1,
