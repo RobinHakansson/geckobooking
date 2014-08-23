@@ -148,11 +148,11 @@ namespace GeckoBooking
                     TableCell tableCell = new TableCell();
                     if (!sessionItem.CourtVacancy[j])
                     {
-                        tableCell.BackColor = Color.FromArgb(1, 250, 0, 0);
+                        tableCell.BackColor = Color.FromArgb(255, 0, 127);
                     }
                     else
                     {
-                        tableCell.BackColor = Color.FromArgb(1, 0, 250, 0);
+                        tableCell.BackColor = Color.FromArgb(153, 255, 153);
                     }
                     trRow.Cells.Add(tableCell);
 
