@@ -1,0 +1,20 @@
+﻿/* --- HOME.aspx --- */
+
+.center h1 {
+    color: black;
+    font-size: 25px;
+    font-family: 'Razer Header Regular', Verdana, Arial, Helvetica, sans-serif;
+}
+
+.jumbotron {
+    background-image: url("https://40.media.tumblr.com/1ad6e83a3f8544673edd103285428e61/tumblr_n3mo3liRh11s8dqpuo1_1280.jpg");
+    background-size: cover;                      
+    background-repeat: no-repeat;
+}
+.jumbotron h1 {
+    color: aliceblue;
+}
+
+
+
+

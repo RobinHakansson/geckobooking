@@ -93,6 +93,8 @@
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Lab.aspx" />
     <Content Include="TestForm.aspx" />
+    <Content Include="Theme\bootstrap.css" />
+    <Content Include="Theme\home.css" />
     <Content Include="Theme\Images\ajax-loader.gif" />
     <Content Include="Theme\Images\calendar-22x21.png" />
     <Content Include="Theme\Images\Gecko-logo.png" />
@@ -103,6 +105,7 @@
     <Content Include="Theme\Images\logo-text.png" />
     <Content Include="Theme\Images\Mint-svart-namn.png" />
     <Content Include="Theme\Images\Svart-turkos-185x169.png" />
+    <Content Include="Theme\Images\hk-tennis.jpg" />
     <Content Include="Theme\Reset.css" />
     <Content Include="Theme\StyleSheet.css" />
     <Content Include="Web.config">
