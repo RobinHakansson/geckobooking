@@ -74,7 +74,7 @@
 
             <div class="col-md-3">
                 <div class="thumbnail">
-                    <img alt="HK tennis" src="../Theme/Images/hk-tennis.jpg" />
+                    <img alt="HK tennis" src="../Theme/Images/tennisprince.jpg" />
                     <p>T = tennis</p>
                 </div>
             </div>
@@ -98,7 +98,8 @@
                     <asp:BoundField DataField="SessionTime" HeaderText="Time" />
                 </Columns>
             </asp:GridView>--%>
-
+        
+        <div class="col-md-6">
         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <asp:Label ID="CurrentDateLabel" runat="server" CssClass="selectedDateText"></asp:Label>
@@ -114,6 +115,22 @@
                 <img src="../Theme/Images/ajax-loader.gif" />
             </ProgressTemplate>
         </asp:UpdateProgress>
+        </div>
+        
+        <div class="col-md-6">
+        <div id="confirm-box">
+         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label6" runat="server" Text="Your Selections" CssClass="selectedSessionText"></asp:Label>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+       </div>
+        </div>
     </div>
+    
+    
 
 </asp:Content>

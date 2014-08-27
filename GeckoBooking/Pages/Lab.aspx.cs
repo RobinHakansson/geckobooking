@@ -204,13 +204,14 @@ namespace GeckoBooking
             }
         }
 
+        
 
         protected void Button2_OnClick(object sender, EventArgs e)
         {
             Label5.Text = DateTime.Now.ToString();
             Label5.Text += " Test: ";
+            Label6.Text = "You have selected: ";
             IEnumerable<Control> cbList = GetAllControls(Table1);
-
 
             var enumerable = cbList as IList<Control> ?? cbList.ToList();
             
@@ -222,11 +223,11 @@ namespace GeckoBooking
                     if (cbBox.Checked)
                     {
                         Label5.Text += ctrl.ID + " ";
+                        Label6.Text += ctrl.ID + " ";
+                            //string.Format("session {0} {1}", ctrl.ID, Environment.NewLine);
                     }
                 }
             }
-
-
         }
 
         protected void Button1_OnClick(object sender, EventArgs e)

@@ -284,14 +284,29 @@ margin-top:20px;
     background-color: whitesmoke; /* The color choice here affects the datepicker calender */
 }
 
+#confirm-box {
+    display: inline-block;
+    width: 100%;
+    background-color: whitesmoke;
+    margin-right: 50px;
+    padding: 20px;
+    border: 1px solid whitesmoke;
+}
+
 .container { /* bootstrap in LAB.aspx */
     width: 100%;
 }
 
-.selectedDateText {
+.selectedDateText
+{
     margin-left: 20px;
-padding-top: 20px;
-display: inline-block;
+    padding-top: 20px;
+    display: inline-block;
+}
+.selectedSessionText {
+    margin-right: 20px;
+    font-size: 15px;
+    color: darkblue;
 }
 
 .bookingButton {

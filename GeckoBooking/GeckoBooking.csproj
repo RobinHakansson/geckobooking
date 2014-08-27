@@ -105,7 +105,7 @@
     <Content Include="Theme\Images\logo-text.png" />
     <Content Include="Theme\Images\Mint-svart-namn.png" />
     <Content Include="Theme\Images\Svart-turkos-185x169.png" />
-    <Content Include="Theme\Images\hk-tennis.jpg" />
+    <Content Include="Theme\Images\tennisprince.jpg" />
     <Content Include="Theme\Reset.css" />
     <Content Include="Theme\StyleSheet.css" />
     <Content Include="Web.config">
