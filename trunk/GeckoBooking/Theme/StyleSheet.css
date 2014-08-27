@@ -239,7 +239,7 @@ header.full {
     border: 1px dotted black;
     height: 300px;
     width: 300px;
-    background-image: url(Images/hk-badm.jpg);
+    /*background-image: url(Images/hk-badm.jpg);*/
 }
 
 #image-box-center
@@ -281,7 +281,11 @@ margin-top:20px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
-    background-color: whitesmoke; /*The color choice here affects the datepicker calender*/
+    background-color: whitesmoke; /* The color choice here affects the datepicker calender */
+}
+
+.container { /* bootstrap in LAB.aspx */
+    width: 100%;
 }
 
 .selectedDateText {

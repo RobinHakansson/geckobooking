@@ -144,7 +144,6 @@ namespace GeckoBooking
                 trRow.Cells.Add(timeCell);
                 for (int j = 0; j < courts.Count; j++)
                 {
-
                     TableCell tableCell = new TableCell();
                     if (!sessionItem.CourtVacancy[j])
                     {
