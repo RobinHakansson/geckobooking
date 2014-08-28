@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="66a607e3de5a45c8afdba6246173fba7" Name="Diagram1" >
+      <Diagram DiagramId="66a607e3de5a45c8afdba6246173fba7" Name="Diagram1" ZoomLevel="89" >
         <EntityTypeShape EntityType="Gecko.User" Width="1.5" PointX="0.875" PointY="1.25" />
         <EntityTypeShape EntityType="Gecko.Court" Width="1.5" PointX="7.875" PointY="1.625" />
         <EntityTypeShape EntityType="Gecko.Booking" Width="1.5" PointX="3.125" PointY="1.125" />

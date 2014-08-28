@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 
 namespace GeckoDAL
 {
+    public partial class Session
+    {
+        public Session()
+        {
+            
+        }
+
+        public Session(Court court, DateTime startDateTime)
+        {
+            Court = court;
+            StartDateTime = startDateTime;
+            EndDateTime = startDateTime.AddHours(1);
+        }
+    }
+
     public class SessionDB
     {
         private static readonly GeckoContainer Context = DB.Context;

@@ -164,15 +164,17 @@ namespace GeckoBooking
                     //};
 
 
-
                     var checkBox = new CheckBox()
                     {
                         Visible = sessionItem.CourtVacancy[j],
-                        ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray())
-                        //,
+                        ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray()),
+                        
                         //AutoPostBack = true
                     };
-
+                    
+                    checkBox.InputAttributes.Add("courtId", courts[j].Id.ToString());
+                    checkBox.InputAttributes.Add("sessionStartTime", sessionItem.SessionTime.ToString());
+                    
 
                     //checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
 
@@ -208,6 +210,12 @@ namespace GeckoBooking
 
         protected void Button2_OnClick(object sender, EventArgs e)
         {
+            var currentBooking = new Booking();
+            currentBooking.User = UserDB.GetUserById(1);
+
+            
+
+
             Label5.Text = DateTime.Now.ToString();
             Label5.Text += " Test: ";
             Label6.Text = "You have selected: ";
@@ -217,17 +225,26 @@ namespace GeckoBooking
             
             foreach (var ctrl in enumerable)
             {
+                
                 if (ctrl.GetType() == typeof (CheckBox))
                 {
                     var cbBox = (CheckBox) ctrl;
                     if (cbBox.Checked)
                     {
+                        Session session = new Session(
+                            CourtDB.GetCourtById(int.Parse(cbBox.InputAttributes["courtid"])), 
+                            DateTime.Parse(cbBox.InputAttributes["sessionstarttime"])
+                            );
+                        currentBooking.Session.Add(session);
+                        //DateTime time = DateTime.Parse(cbBox.InputAttributes["value"].TrimStart('_'));
                         Label5.Text += ctrl.ID + " ";
-                        Label6.Text += "<br/>"+ctrl.ID + " ";
+                        Label6.Text += "<br/>" + ctrl.ID + ": " + "CourtId - " + cbBox.InputAttributes["courtid"] + " SessionStartTime - " + cbBox.InputAttributes["sessionstarttime"];
                             //string.Format("session {0} {1}", ctrl.ID, Environment.NewLine);
                     }
                 }
             }
+
+            Session["CurrentBooking"] = currentBooking;
         }
 
         protected void Button1_OnClick(object sender, EventArgs e)
@@ -246,6 +263,16 @@ namespace GeckoBooking
                         cbBox.Checked = false;
                     }
                 }
+            }
+        }
+
+        protected void ConfirmBooking_OnClick(object sender, EventArgs e)
+        {
+            var currentBooking = Session["CurrentBooking"] as Booking;
+
+            if (currentBooking != null)
+            {
+                
             }
         }
     }

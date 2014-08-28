@@ -30,7 +30,7 @@ namespace Test
 
             //Console.WriteLine(UserDB.UpdateUser(user));
 
-            List<User> users_1 = UserDB.GetUsersWithLetterLInLastNameNotEF();
+            List<User> users_1 = UserDB.GetUsersWithLetterLInLastName();
 
             foreach (var item in users_1)
             {

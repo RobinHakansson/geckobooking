@@ -27,14 +27,14 @@ GO
 
 
 INSERT INTO [dbo].[Bookings]([BookingDate],[TotalCost],[IsDeleted],[UserId])
-     VALUES ('2014-08-03 15:23', 300, 0, 1)
+     VALUES ('2014-08-03 15:23', 300, '0', 1)
 GO
 INSERT INTO [dbo].[Bookings]([BookingDate],[TotalCost],[IsDeleted],[UserId])
-     VALUES ('2014-08-08 16:23', 300, 0, 2)
+     VALUES ('2014-08-08 16:23', 300, '0', 2)
 GO
 
 INSERT INTO [dbo].[Sessions]([StartDateTime],[EndDateTime],[SessionCost],[IsDeleted],[BookingId],[CourtId])
-     VALUES('2014-08-16 10:00', '2014-08-16 11:00', 100, '0', 1, 1)
+     VALUES('2014-08-16 10:00', '2014-08-16 10:59', 100, '0', 1, 1)
 GO
 INSERT INTO [dbo].[Sessions]([StartDateTime],[EndDateTime],[SessionCost],[IsDeleted],[BookingId],[CourtId])
      VALUES('2014-08-16 9:00', '2014-08-16 10:59', 200, '0', 1, 2)

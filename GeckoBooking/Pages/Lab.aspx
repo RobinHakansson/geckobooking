@@ -123,6 +123,7 @@
          <asp:UpdatePanel ID="UpdatePanel3" runat="server">
             <ContentTemplate>
                 <asp:Label ID="Label6" runat="server" Text="Your Selections" CssClass="selectedSessionText"></asp:Label>
+                <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" />
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />

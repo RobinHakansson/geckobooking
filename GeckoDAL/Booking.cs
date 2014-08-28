@@ -22,7 +22,7 @@ namespace GeckoDAL
         public int Id { get; set; }
         public string BookingDate { get; set; }
         public decimal TotalCost { get; set; }
-        public string IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public int UserId { get; set; }
     
         public virtual User User { get; set; }

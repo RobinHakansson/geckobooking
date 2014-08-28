@@ -52,47 +52,47 @@ namespace GeckoDAL
         }
         
         //Find connectionString in App.config (without EF)
-        private static readonly string geckoConnectionString = ConfigurationManager.ConnectionStrings["GeckoDB"].ToString();
+        //private static readonly string geckoConnectionString = ConfigurationManager.ConnectionStrings["GeckoDB"].ToString();
 
-        public static List<User> GetUsersWithLetterLInLastNameNotEF()
-        {
-            //when using closes then the connection will close too
-            using (SqlConnection connection = new SqlConnection(geckoConnectionString))
-            {
-                connection.Open();
+        //public static List<User> GetUsersWithLetterLInLastNameNotEF()
+        //{
+        //    //when using closes then the connection will close too
+        //    using (SqlConnection connection = new SqlConnection(geckoConnectionString))
+        //    {
+        //        connection.Open();
 
-                StringBuilder sqlquery = new StringBuilder("SELECT [Id],[FirstName],[LastName],[Email],[Phone],[IsDeleted]");
-                sqlquery.Append("FROM [dbo].[Users]");
-                sqlquery.Append("WHERE [LastName] LIKE '%L%' OR [LastName] LIKE '%l%'");
+        //        StringBuilder sqlquery = new StringBuilder("SELECT [Id],[FirstName],[LastName],[Email],[Phone],[IsDeleted]");
+        //        sqlquery.Append("FROM [dbo].[Users]");
+        //        sqlquery.Append("WHERE [LastName] LIKE '%L%' OR [LastName] LIKE '%l%'");
 
-                using (SqlCommand command = new SqlCommand(sqlquery.ToString(), connection))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataSet dataset = new DataSet();
+        //        using (SqlCommand command = new SqlCommand(sqlquery.ToString(), connection))
+        //        {
+        //            SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //            DataSet dataset = new DataSet();
 
-                    adapter.Fill(dataset);
+        //            adapter.Fill(dataset);
 
-                    List<User> result = new List<User>();
-                    if (dataset.Tables[0].Rows.Count > 0)
-                    {
-                        for (int i = 0; i < dataset.Tables[0].Rows.Count; i++)
-                        {
-                            DataRow row = dataset.Tables[0].Rows[i];
-                            User user = new User() { 
-                                Id = int.Parse(row["Id"].ToString().Trim()), //Trim removes blanks before and after
-                                FirstName = row["FirstName"].ToString().Trim(),
-                                LastName = row["LastName"].ToString().Trim(),
-                                Email = row["Email"].ToString().Trim(),
-                                Phone = row["Phone"].ToString().Trim(),
-                                IsDeleted = (row["IsDeleted"].ToString().Trim() == "1")
-                            };
-                            result.Add(user);
-                        }
-                    }
-                    return result;
-                }
-            }
-        }
+        //            List<User> result = new List<User>();
+        //            if (dataset.Tables[0].Rows.Count > 0)
+        //            {
+        //                for (int i = 0; i < dataset.Tables[0].Rows.Count; i++)
+        //                {
+        //                    DataRow row = dataset.Tables[0].Rows[i];
+        //                    User user = new User() { 
+        //                        Id = int.Parse(row["Id"].ToString().Trim()), //Trim removes blanks before and after
+        //                        FirstName = row["FirstName"].ToString().Trim(),
+        //                        LastName = row["LastName"].ToString().Trim(),
+        //                        Email = row["Email"].ToString().Trim(),
+        //                        Phone = row["Phone"].ToString().Trim(),
+        //                        IsDeleted = (row["IsDeleted"].ToString().Trim() == "1")
+        //                    };
+        //                    result.Add(user);
+        //                }
+        //            }
+        //            return result;
+        //        }
+        //    }
+        //}
 
         public static User GetUserById(int id)
         {
