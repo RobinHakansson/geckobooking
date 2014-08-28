@@ -28,7 +28,7 @@ namespace GeckoDAL
         public string Phone { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int FailedPasswordAttemptCount { get; set; }
-        public string IsLockedOut { get; set; }
+        public bool IsLockedOut { get; set; }
         public Nullable<System.DateTime> LockedOutDate { get; set; }
         public string Comment { get; set; }
         public bool IsDeleted { get; set; }

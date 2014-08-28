@@ -36,7 +36,7 @@
     <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
-    <Property Name="IsLockedOut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsLockedOut" Type="bit" Nullable="false" />
     <Property Name="LockedOutDate" Type="datetime" Nullable="true" />
     <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -47,7 +47,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="HourlyFee" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HourlyFee" Type="decimal" Nullable="false" />
     <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
@@ -56,7 +56,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BookingDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BookingDate" Type="datetime" Nullable="false" />
     <Property Name="TotalCost" Type="decimal" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
@@ -145,7 +145,7 @@
           <NavigationProperty Name="Booking" Relationship="Gecko.UserBooking" FromRole="User" ToRole="Booking" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <Property Type="Int32" Name="FailedPasswordAttemptCount" Nullable="false" />
-          <Property Type="String" Name="IsLockedOut" Nullable="false" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
           <Property Type="DateTime" Name="LockedOutDate" Nullable="true" />
           <Property Type="String" Name="Comment" Nullable="false" />
           <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
@@ -156,7 +156,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="HourlyFee" Nullable="false" />
+          <Property Type="Decimal" Name="HourlyFee" Nullable="false" />
           <Property Type="String" Name="Status" Nullable="true" />
           <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
           <NavigationProperty Name="Session" Relationship="Gecko.CourtSession" FromRole="Court" ToRole="Session" />
@@ -166,7 +166,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="BookingDate" Nullable="false" />
+          <Property Type="DateTime" Name="BookingDate" Nullable="false" />
           <Property Type="Decimal" Name="TotalCost" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Gecko.UserBooking" FromRole="Booking" ToRole="User" />
           <Property Type="Boolean" Name="IsDeleted" Nullable="false" />

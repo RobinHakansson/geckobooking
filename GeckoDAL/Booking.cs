@@ -20,7 +20,7 @@ namespace GeckoDAL
         }
     
         public int Id { get; set; }
-        public string BookingDate { get; set; }
+        public System.DateTime BookingDate { get; set; }
         public decimal TotalCost { get; set; }
         public bool IsDeleted { get; set; }
         public int UserId { get; set; }
