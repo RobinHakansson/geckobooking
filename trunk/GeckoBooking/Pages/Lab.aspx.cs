@@ -16,10 +16,10 @@ namespace GeckoBooking
         {
             Label5.Text = string.Empty;
 
-            if (!IsPostBack)
-            {
-                TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            }
+            //if (!IsPostBack)
+            //{
+            //    TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            //}
 
             //CurrentDateLabel.Text = TextBox2.Text;
 

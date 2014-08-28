@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMasterPage.master" AutoEventWireup="true" CodeBehind="Lab.aspx.cs" Inherits="GeckoBooking.Lab" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="../Theme/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../Theme/StyleSheet.css" type="text/css" />
+    <%--<link rel="stylesheet" href="../Theme/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../Theme/StyleSheet.css" type="text/css" />--%>
     <script type="text/javascript" src="../JavaScript/Datepicker-v1.js"></script>
     <script type="text/javascript">
         function setDate() {
@@ -53,9 +53,10 @@
                         <span class="vertline-center">Date:</span>
                         <asp:TextBox ID="TextBox2" runat="server" onchange="javascript: setDate();" CssClass="date"></asp:TextBox>
                         <img id="calendar-icon" alt="Show calendar" src="../Theme/Images/calendar-22x21.png" class="vertline-center" />
-                        <asp:Button ID="Button1" runat="server" Text="Show available sessions" CssClass="bookingButton" OnClick="Button1_OnClick" />
+                        
                         <br />
                         <div id="datepicker" style="display: none"></div>
+                        <asp:Button ID="Button1" runat="server" Text="Show available sessions" CssClass="bookingButton" OnClick="Button1_OnClick" />
                         <br />
                     </div>
                 </div>

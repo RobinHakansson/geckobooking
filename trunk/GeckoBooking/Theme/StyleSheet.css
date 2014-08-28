@@ -162,6 +162,7 @@ header.full {
 .visible {
     display: flex;
 }
+
 .ellipse {
     cursor: pointer;
 }
