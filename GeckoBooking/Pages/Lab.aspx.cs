@@ -223,7 +223,7 @@ namespace GeckoBooking
                     if (cbBox.Checked)
                     {
                         Label5.Text += ctrl.ID + " ";
-                        Label6.Text += ctrl.ID + " ";
+                        Label6.Text += "<br/>"+ctrl.ID + " ";
                             //string.Format("session {0} {1}", ctrl.ID, Environment.NewLine);
                     }
                 }
