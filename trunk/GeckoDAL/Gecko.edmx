@@ -58,7 +58,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BookingDate" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TotalCost" Type="decimal" Nullable="false" />
-    <Property Name="IsDeleted" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Sessions">
@@ -168,8 +168,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="BookingDate" Nullable="false" />
           <Property Type="Decimal" Name="TotalCost" Nullable="false" />
-          <Property Type="String" Name="IsDeleted" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Gecko.UserBooking" FromRole="Booking" ToRole="User" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <NavigationProperty Name="Session" Relationship="Gecko.BookingSession" FromRole="Booking" ToRole="Session" />
         </EntityType>

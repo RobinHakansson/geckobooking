@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/12/2014 12:30:40
--- Generated from EDMX file: C:\Users\Erica\Documents\EC Utbildning\17 Projekt med Robin\WebApp\GeckoLabSiteWithEntityFramework\GeckoDAL\Gecko.edmx
+-- Date Created: 08/28/2014 13:04:03
+-- Generated from EDMX file: C:\Users\Robin\Documents\GeckoProjects\GeckoDAL\Gecko.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -81,7 +81,7 @@ CREATE TABLE [dbo].[Bookings] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [BookingDate] nvarchar(max)  NOT NULL,
     [TotalCost] decimal(18,0)  NOT NULL,
-    [IsDeleted] nvarchar(max)  NOT NULL,
+    [IsDeleted] bit  NOT NULL,
     [UserId] int  NOT NULL
 );
 GO
