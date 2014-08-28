@@ -107,8 +107,9 @@ namespace GeckoBooking
         protected void MyCheckedChanged(object sender, EventArgs e)
         {
 
-            CheckBox checkBox = (CheckBox) sender;
-            checkBox.Checked = true;
+            //CheckBox checkBox = (CheckBox) sender;
+            //checkBox.Checked = true;
+            Button2_OnClick(Page, e);
         }
 
         
@@ -164,24 +165,24 @@ namespace GeckoBooking
                     //};
 
 
-                    var checkBox = new CheckBox()
-                    {
+                    var checkBox = new SessionItemButton();
                         Visible = sessionItem.CourtVacancy[j],
-                        ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray()),
+                        ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray())
                         
                         //AutoPostBack = true
                     };
+                    
                     
                     checkBox.InputAttributes.Add("courtId", courts[j].Id.ToString());
                     checkBox.InputAttributes.Add("sessionStartTime", sessionItem.SessionTime.ToString());
                     
 
-                    //checkBox.CheckedChanged += new EventHandler(MyCheckedChanged);
+                    //checkBox.CheckedChanged += Button2_OnClick;
 
                     //upPanel.ContentTemplateContainer.Controls.Add(checkBox);
 
                     //upPanel.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
-                    //UpdatePanel2.Triggers.Add(new PostBackTrigger() { ControlID = checkBox.ID });
+                    //UpdatePanel3.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
                    
                     ((IParserAccessor)tableCell).AddParsedSubObject(checkBox);
 
@@ -212,9 +213,6 @@ namespace GeckoBooking
         {
             var currentBooking = new Booking();
             currentBooking.User = UserDB.GetUserById(1);
-
-            
-
 
             Label5.Text = DateTime.Now.ToString();
             Label5.Text += " Test: ";

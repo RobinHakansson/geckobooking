@@ -35,7 +35,8 @@ namespace GeckoDAL
 
         public static List<Court> GetAllOccupiedCourtsByDateTime(DateTime dt)
         {
-            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
+            DateTime modifiedDt = dt.AddSeconds(1);
+            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(modifiedDt);
             IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
             List<Court> result = GetAllNotDeletedCourts().Where(c => occupiedCourtId.Contains(c.Id)).ToList();
@@ -44,7 +45,8 @@ namespace GeckoDAL
 
         public static List<Court> GetAllAvailableCourtsByDateTime(DateTime dt)
         {
-            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(dt);
+            DateTime modifiedDt = dt.AddSeconds(1);
+            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(modifiedDt);
             IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
             List<Court> result = GetAllNotDeletedCourts().Where(c => !occupiedCourtId.Contains(c.Id)).ToList();
@@ -53,7 +55,8 @@ namespace GeckoDAL
 
         public static bool[] CourtVacancyByDatetime(DateTime date)
         {
-            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(date);
+            DateTime modifiedDt = date.AddSeconds(1);
+            List<Session> listSession = SessionDB.GetAllSessionsByDateTime(modifiedDt);
             IEnumerable<int> occupiedCourtId = listSession.Select(s => s.CourtId);
 
             var result = GetAllNotDeletedCourts().Select(c => !occupiedCourtId.Contains(c.Id)).ToArray();
