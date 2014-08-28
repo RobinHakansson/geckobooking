@@ -18,6 +18,14 @@ namespace GeckoDAL
             Court = court;
             StartDateTime = startDateTime;
             EndDateTime = startDateTime.AddHours(1);
+
+            int hours = (EndDateTime - startDateTime).Hours;
+            if (hours >= 0)
+            {
+                SessionCost = court.HourlyFee * hours;
+            }
+            
+            
         }
     }
 

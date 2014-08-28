@@ -272,7 +272,16 @@ namespace GeckoBooking
 
             if (currentBooking != null)
             {
-                
+                int affectedRows = BookingDB.AddBooking(currentBooking);
+
+                if (affectedRows > 0)
+                {
+                    Label6.Text = "Booking was added!";
+                }
+                else
+                {
+                    Label6.Text = "Booking could not be added!";
+                }
             }
         }
     }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/28/2014 13:04:03
+-- Date Created: 08/28/2014 14:43:23
 -- Generated from EDMX file: C:\Users\Robin\Documents\GeckoProjects\GeckoDAL\Gecko.edmx
 -- --------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[Users] (
     [Phone] nvarchar(max)  NOT NULL,
     [CreatedDate] datetime  NOT NULL,
     [FailedPasswordAttemptCount] int  NOT NULL,
-    [IsLockedOut] nvarchar(max)  NOT NULL,
+    [IsLockedOut] bit  NOT NULL,
     [LockedOutDate] datetime  NULL,
     [Comment] nvarchar(max)  NOT NULL,
     [IsDeleted] bit  NOT NULL
@@ -70,7 +70,7 @@ GO
 CREATE TABLE [dbo].[Courts] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [HourlyFee] nvarchar(max)  NOT NULL,
+    [HourlyFee] decimal(18,0)  NOT NULL,
     [Status] nvarchar(max)  NULL,
     [IsDeleted] bit  NOT NULL
 );
@@ -79,7 +79,7 @@ GO
 -- Creating table 'Bookings'
 CREATE TABLE [dbo].[Bookings] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [BookingDate] nvarchar(max)  NOT NULL,
+    [BookingDate] datetime  NOT NULL,
     [TotalCost] decimal(18,0)  NOT NULL,
     [IsDeleted] bit  NOT NULL,
     [UserId] int  NOT NULL
