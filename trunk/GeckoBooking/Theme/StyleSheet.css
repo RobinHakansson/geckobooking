@@ -315,6 +315,12 @@ margin-top:20px;
     margin-top: 10px;
 }
 
+
+.SIButton {
+    padding: 0;
+    margin: 0;
+}
+
 #footer {
     margin: 30px auto;
     text-align:center;
