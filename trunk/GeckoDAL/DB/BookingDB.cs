@@ -23,11 +23,10 @@ namespace GeckoDAL
 
         public static int AddBooking(Booking booking)
         {
-            booking.BookingDate = DateTime.Now.ToString();
+            booking.BookingDate = DateTime.Now;
             Context.Bookings.Add(booking);
             int affectedRows = Context.SaveChanges();
             return affectedRows;
         }
-
     }
 }
