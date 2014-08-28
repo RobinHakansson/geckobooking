@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/28/2014 14:43:23
--- Generated from EDMX file: C:\Users\Robin\Documents\GeckoProjects\GeckoDAL\Gecko.edmx
+-- Date Created: 08/28/2014 14:51:30
+-- Generated from EDMX file: C:\Users\Erica\Documents\EC Utbildning\17 Projekt med Robin\WebApp\GeckoLabSiteWithEntityFramework\GeckoDAL\Gecko.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
