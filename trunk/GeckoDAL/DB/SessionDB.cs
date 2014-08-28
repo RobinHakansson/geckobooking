@@ -25,7 +25,6 @@ namespace GeckoDAL
                 SessionCost = court.HourlyFee * hours;
             }
             
-            
         }
     }
 
@@ -44,7 +43,7 @@ namespace GeckoDAL
             return result;
         }
 
-        public static List<Session> GetAllSessionsByCourtAndDate(int cid, DateTime date)
+        public static List<Session> GetAllOccupiedSessionsByCourtAndDate(int cid, DateTime date)
         {
             var result = GetAllNotDeletedSessions()
                 .Where(s => s.CourtId == cid && s.StartDateTime <= date && s.EndDateTime >= date)
