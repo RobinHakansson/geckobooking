@@ -51,6 +51,12 @@ namespace GeckoDAL
             return result;
         }
 
-        
+        public static List<Session> GetAllSessionsByBookingId(int bid)
+        {
+            var result = GetAllNotDeletedSessions()
+                .Where(s => s.BookingId == bid)
+                .OrderBy(s => s.StartDateTime).ToList();
+            return result;
+        }
     }
 }

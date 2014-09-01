@@ -90,6 +90,7 @@
     <Content Include="JavaScript\jquery-ui-1-11-0\jquery-ui.structure.min.css" />
     <Content Include="JavaScript\jquery-ui-1-11-0\jquery-ui.theme.min.css" />
     <Content Include="JavaScript\menu-resize.js" />
+    <Content Include="Pages\Booking-confirmation.aspx" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Lab.aspx" />
@@ -118,6 +119,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Pages\BookableCourtColumn.cs" />
+    <Compile Include="Pages\Booking-confirmation.aspx.cs">
+      <DependentUpon>Booking-confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Booking-confirmation.aspx.designer.cs">
+      <DependentUpon>Booking-confirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Lab.aspx.cs">
       <DependentUpon>Lab.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
