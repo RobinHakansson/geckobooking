@@ -176,12 +176,12 @@ namespace GeckoBooking
 
                             //DateTime time = DateTime.Parse(cbBox.InputAttributes["value"].TrimStart('_'));
                             Label5.Text += ctrl.ID + " ";
-                            Label6.Text += string.Format("<br/>CourtId: {0}  <br/>SessionStartTime: {1} <br/>Session cost: {2} kr",
+                            Label6.Text += string.Format("<br/>CourtId: {0}  <br/>SessionStartTime: {1} <br/>Session cost: {2} SEK",
                                 sessionItemButton.Court.Id, sessionItemButton.StartSessionTime, session.SessionCost);
                         }
                     }
                 }
-                Label6.Text += string.Format("<br/><br/> Number of sessions: {0} <br/>TotalCost: {1} kr", currentBooking.Session.Count,
+                Label6.Text += string.Format("<br/><br/> Number of sessions: {0} <br/>TotalCost: {1} SEK", currentBooking.Session.Count,
                     currentBooking.TotalCost);
                 Session["CurrentBooking"] = currentBooking;
             }
@@ -216,7 +216,8 @@ namespace GeckoBooking
 
                 if (affectedRows > 0)
                 {
-                    Label6.Text = "Booking was added!";
+                    //Label6.Text = "Booking was added!";
+                    Response.Redirect("Booking-confirmation.aspx");
                 }
                 else
                 {
