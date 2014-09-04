@@ -14,7 +14,7 @@ namespace GeckoBooking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label5.Text = string.Empty;
+            
 
             //if (!IsPostBack)
             //{
@@ -150,9 +150,7 @@ namespace GeckoBooking
                 button.BackColor = button.BackColor == Color.FromArgb(153, 255, 153) ? Color.FromArgb(255,0,191,255) : Color.FromArgb(153, 255, 153);
                 var currentBooking = new Booking();
                 currentBooking.User = UserDB.GetUserById(1);
-
-                Label5.Text = DateTime.Now.ToString();
-                Label5.Text += " Test: ";
+                
                 Label6.Text = "You have selected: ";
                 IEnumerable<Control> cbList = GetAllControls(Table1);
 
@@ -175,7 +173,7 @@ namespace GeckoBooking
                             currentBooking.TotalCost += session.SessionCost;
 
                             //DateTime time = DateTime.Parse(cbBox.InputAttributes["value"].TrimStart('_'));
-                            Label5.Text += ctrl.ID + " ";
+                           
                             Label6.Text += string.Format("<br/>CourtId: {0}  <br/>SessionStartTime: {1} <br/>Session cost: {2} SEK",
                                 sessionItemButton.Court.Id, sessionItemButton.StartSessionTime, session.SessionCost);
                         }

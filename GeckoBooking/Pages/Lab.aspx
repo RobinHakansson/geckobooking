@@ -84,22 +84,6 @@
 
     <h2>Courts for booking</h2>
     <div id="booking-box">
-
-        <asp:Button ID="Button2" runat="server" Text="Test: Check if checked ^.^" OnClick="Button2_OnClick" />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:Label ID="Label5" runat="server" CssClass="selectedDateText"></asp:Label>
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
-            </Triggers>
-        </asp:UpdatePanel>
-        <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-                <Columns>
-                    <asp:BoundField DataField="SessionTime" HeaderText="Time" />
-                </Columns>
-            </asp:GridView>--%>
-
         <div class="col-md-6">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
@@ -127,7 +111,6 @@
                         
                     </ContentTemplate>
                     <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
                         <asp:AsyncPostBackTrigger ControlID="ConfirmBooking" EventName="Click" />
                     </Triggers>
                 </asp:UpdatePanel>
