@@ -131,7 +131,7 @@ header.full {
         left: 5%;
         top:2px;
     }
-
+    
 
     header.small li.menu-item
     {
@@ -291,10 +291,11 @@ margin-top:20px;
     text-align: center;
 }
 
-#confirm-box {
+.confirm-box {
     display: inline-block;
     width: 100%;
     background-color: whitesmoke;
+    margin-top: 20px;
     margin-right: 50px;
     padding: 20px;
     border: 1px solid whitesmoke;

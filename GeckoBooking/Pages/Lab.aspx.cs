@@ -77,13 +77,6 @@ namespace GeckoBooking
                     }
                     trRow.Cells.Add(tableCell);
 
-                    //var upPanel = new UpdatePanel()
-                    //{
-                    //    ID =
-                    //        "UpdatePanel-" + courts[j].Id + "-" +
-                    //        sessionItem.SessionTime.ToShortTimeString().TrimEnd(':'),
-                    //    UpdateMode = UpdatePanelUpdateMode.Conditional
-                    //};
 
                     var sessionItemButton = new SessionItemButton();
 
@@ -162,11 +155,13 @@ namespace GeckoBooking
 
                 if (currentBooking.Session.Count != 0)
                 {
+                    ConfirmBox.Visible = true;
                     ConfirmBooking.Enabled = true;
                     ConfirmBooking.Visible = true;
                 }
                 else
                 {
+                    ConfirmBox.Visible = true;
                     ConfirmBooking.Enabled = false;
                     ConfirmBooking.Visible = true;
                 }

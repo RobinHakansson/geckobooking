@@ -88,6 +88,7 @@
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <asp:Label ID="CurrentDateLabel" runat="server" CssClass="selectedDateText"></asp:Label>
+                    <br/>
                     <asp:Table ID="Table1" runat="server" CssClass="bookingTable"></asp:Table>
                 </ContentTemplate>
                 <Triggers>
@@ -104,21 +105,23 @@
         </div>
 
         <div class="col-md-6">
-            <div id="confirm-box">
+            <%--<div id="confirm-box">--%>
+            
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                     <ContentTemplate>
+                        <asp:Panel ID="ConfirmBox" runat="server" CssClass="confirm-box" Visible="False">
                         <asp:Label ID="Label6" runat="server" Text="Your Selections" CssClass="selectedSessionText"></asp:Label>
-                        <br/>
+                        <br />
                         <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" Enabled="False" Visible="False" />
-                    </ContentTemplate>
+                    </asp:Panel>
+                            </ContentTemplate>
                     <Triggers>
-                        
-                        
                     </Triggers>
                 </asp:UpdatePanel>
-                <br/>
-                
-            </div>
+                <br />
+            
+
+            <%--</div>--%>
         </div>
     </div>
 </asp:Content>
