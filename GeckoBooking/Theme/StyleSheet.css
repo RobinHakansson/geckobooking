@@ -322,6 +322,13 @@ margin-top:20px;
     margin-top: 10px;
 }
 
+.btnDisable {
+    color: gray;
+}
+
+.btnEnable {
+    color: black;
+}
 
 .SIButton {
     width: 100%;

@@ -112,7 +112,7 @@
                         <asp:Panel ID="ConfirmBox" runat="server" CssClass="confirm-box" Visible="False">
                         <asp:Label ID="Label6" runat="server" Text="Your Selections" CssClass="selectedSessionText"></asp:Label>
                         <br />
-                        <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" Enabled="False" Visible="False" />
+                        <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" Enabled="False" Visible="False" CssClass="btnDisable" />
                     </asp:Panel>
                             </ContentTemplate>
                     <Triggers>
