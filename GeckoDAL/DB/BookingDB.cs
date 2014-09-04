@@ -10,9 +10,16 @@ namespace GeckoDAL
     {
         private static readonly GeckoContainer Context = DB.Context;
 
+        
+
         private static IEnumerable<Booking> GetAllNotDeletedBookings()
         {
             return Context.Bookings.Where(b => !b.IsDeleted);
+        }
+
+        public static List<Booking> GetBookingsByUserId(int userId)
+        {
+            return GetAllNotDeletedBookings().Where(b => b.UserId == userId).ToList();
         }
 
         public static Booking GetBookingById(int id)

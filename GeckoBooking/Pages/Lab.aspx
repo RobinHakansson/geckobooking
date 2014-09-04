@@ -22,26 +22,12 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--<div id="pass-test-box">
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" Text="Encode" OnClick="Button1_Click" />
-
-        <br />
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="WRONG!" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" ControlToValidate="TextBox2"></asp:RegularExpressionValidator>
-
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
-        <br />
-        <br />
-        <br />
-        <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
-        <br />
-        <br />
-    </div>--%>
+    
+    <ul>
+        <li class="sub-menu-item"><a href="Lab.aspx"><h4>Booking</h4></a></li>
+        <li class="sub-menu-item"><a href="MyPage.aspx"><h4>MyPage</h4></a></li>
+    </ul>
+    <br/>
 
     <div class="container">
         <div class="row">

@@ -209,7 +209,33 @@ header.full {
     vertical-align:middle;
     }
 
+.sub-menu-item {
+    display:inline-block;
+    vertical-align:middle;
+    /*text-align: center;*/
+    }
 
+hr {
+    border-top: 1px solid #000;
+}
+
+
+
+.myBookingsTable th, td {
+    text-align: left;
+    border: none;
+    padding: 5px 100px 5px 5px;
+}
+
+.no-spacing-left{
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.no-spacing-right{
+    padding-right: 0px;
+    margin-right: 0px;
+}
 #pass-test-box {
 }
 #booking-test-box {   
