@@ -108,14 +108,16 @@
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="Label6" runat="server" Text="Your Selections" CssClass="selectedSessionText"></asp:Label>
-                        
+                        <br/>
+                        <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" Enabled="False" Visible="False" />
                     </ContentTemplate>
                     <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="ConfirmBooking" EventName="Click" />
+                        
+                        
                     </Triggers>
                 </asp:UpdatePanel>
                 <br/>
-                <asp:Button ID="ConfirmBooking" runat="server" Text="Confirm booking" OnClick="ConfirmBooking_OnClick" />
+                
             </div>
         </div>
     </div>

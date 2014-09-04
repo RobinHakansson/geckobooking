@@ -29,17 +29,8 @@ namespace GeckoBooking
                 Button1_OnClick(Page, e);
             }
         }
-
-
-
-        protected void MyCheckedChanged(object sender, EventArgs e)
-        {
-
-            //CheckBox checkBox = (CheckBox) sender;
-            //checkBox.Checked = true;
-            Button2_OnClick(Page, e);
-        }
-
+        
+       
 
 
         protected void CreateTable()
@@ -103,22 +94,8 @@ namespace GeckoBooking
                     sessionItemButton.Court = courts[j];
                     sessionItemButton.StartSessionTime = sessionItem.SessionTime;
 
-                    sessionItemButton.Click += Button2_OnClick;
-
-                    //var checkBox = new CheckBox()
-                    //{
-                    //    Visible = sessionItem.CourtVacancy[j],
-                    //    ID = "court"+courts[j].Id + "_time" + new string(sessionItem.SessionTime.ToShortTimeString().TakeWhile(c => c != ':').ToArray())
-
-                    //    //AutoPostBack = true
-                    //};
-
-                    //checkBox.CheckedChanged += Button2_OnClick;
-
-                    //upPanel.ContentTemplateContainer.Controls.Add(checkBox);
-
-                    //upPanel.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
-                    //UpdatePanel3.Triggers.Add(new AsyncPostBackTrigger() { ControlID = checkBox.ID });
+                    sessionItemButton.Click += UpdateSelectedSessionItems;
+                    UpdatePanel3.Triggers.Add(new AsyncPostBackTrigger(){ControlID = sessionItemButton.ID, EventName = "Click"});
 
                     ((IParserAccessor)tableCell).AddParsedSubObject(sessionItemButton);
                 }
@@ -140,8 +117,12 @@ namespace GeckoBooking
         }
 
 
-
-        protected void Button2_OnClick(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void UpdateSelectedSessionItems(object sender, EventArgs e)
         {
             var button = sender as SessionItemButton;
 
@@ -155,11 +136,12 @@ namespace GeckoBooking
                 IEnumerable<Control> cbList = GetAllControls(Table1);
 
                 var enumerable = cbList as IList<Control> ?? cbList.ToList();
-
+                
                 foreach (var ctrl in enumerable)
                 {
                     if (ctrl.GetType() == typeof(SessionItemButton))
                     {
+                        
                         var sessionItemButton = (SessionItemButton)ctrl;
                         if (sessionItemButton.BackColor == Color.FromArgb(255,0,191,255))
                         {
@@ -169,16 +151,26 @@ namespace GeckoBooking
                                 );
 
                             currentBooking.Session.Add(session);
-
+                            
                             currentBooking.TotalCost += session.SessionCost;
-
-                            //DateTime time = DateTime.Parse(cbBox.InputAttributes["value"].TrimStart('_'));
-                           
+                            
                             Label6.Text += string.Format("<br/>CourtId: {0}  <br/>SessionStartTime: {1} <br/>Session cost: {2} SEK",
                                 sessionItemButton.Court.Id, sessionItemButton.StartSessionTime, session.SessionCost);
                         }
                     }
                 }
+
+                if (currentBooking.Session.Count != 0)
+                {
+                    ConfirmBooking.Enabled = true;
+                    ConfirmBooking.Visible = true;
+                }
+                else
+                {
+                    ConfirmBooking.Enabled = false;
+                    ConfirmBooking.Visible = true;
+                }
+
                 Label6.Text += string.Format("<br/><br/> Number of sessions: {0} <br/>TotalCost: {1} SEK", currentBooking.Session.Count,
                     currentBooking.TotalCost);
                 Session["CurrentBooking"] = currentBooking;
