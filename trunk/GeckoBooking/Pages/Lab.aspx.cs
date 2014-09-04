@@ -158,9 +158,11 @@ namespace GeckoBooking
                     ConfirmBox.Visible = true;
                     ConfirmBooking.Enabled = true;
                     ConfirmBooking.Visible = true;
+                    ConfirmBooking.CssClass = "btnEnable";
                 }
                 else
                 {
+                    ConfirmBooking.CssClass = "btnDisable";
                     ConfirmBox.Visible = true;
                     ConfirmBooking.Enabled = false;
                     ConfirmBooking.Visible = true;
