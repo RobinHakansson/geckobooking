@@ -37,6 +37,11 @@ namespace GeckoDAL
             return Context.Sessions.Where(s => !s.IsDeleted);           
         }
 
+        public static Session GetSessionById(int id)
+        {
+            return GetAllNotDeletedSessions().SingleOrDefault(s => s.Id == id);
+        }
+
         public static List<Session> GetAllSessionsByDateTime(DateTime dt)
         {
             var result = GetAllNotDeletedSessions().Where(s => s.StartDateTime <= dt && s.EndDateTime >= dt).ToList();
@@ -57,6 +62,19 @@ namespace GeckoDAL
                 .Where(s => s.BookingId == bid)
                 .OrderBy(s => s.StartDateTime).ToList();
             return result;
+        }
+
+        public static int DeleteSessionById(int id)
+        {
+            Session sessionToDelete = GetSessionById(id);
+
+            if (sessionToDelete != null)
+            {
+                sessionToDelete.IsDeleted = true;
+            }
+
+            int affectedRows = Context.SaveChanges();
+            return affectedRows;
         }
     }
 }

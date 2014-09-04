@@ -18,7 +18,7 @@ namespace GeckoBooking.Pages
 
         public void CreateUserBookingTable()
         {
-            UserName.Text += string.Format("UserName: {0}", UserDB.GetUserById(1).UserName);
+            UserName.Text = string.Format("UserName: {0}", UserDB.GetUserById(1).UserName);
             foreach (var booking in BookingDB.GetBookingsByUserId(1))
             {
                 TableHeaderRow tbHeaderRow = new TableHeaderRow() { };
@@ -41,7 +41,7 @@ namespace GeckoBooking.Pages
                 foreach (var session in SessionDB.GetAllSessionsByBookingId(booking.Id))
                 {
                     TableRow trSession = new TableRow();
-                    SessionItemCheckBox cb = new SessionItemCheckBox() { Session = session };
+                    SessionItemCheckBox cb = new SessionItemCheckBox() {ID = session.Id.ToString() ,Session = session  };
                     TableCell tbCell = new TableCell();
                     ((IParserAccessor)tbCell).AddParsedSubObject(cb);
 
@@ -81,8 +81,7 @@ namespace GeckoBooking.Pages
                     if (sessionItemCheckBox.Checked == true)
                     {
                         Session session = sessionItemCheckBox.Session;
-
-                        
+                        SessionDB.DeleteSessionById(session.Id);
                     }
                 }
             }
