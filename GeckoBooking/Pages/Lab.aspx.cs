@@ -14,8 +14,6 @@ namespace GeckoBooking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
             //if (!IsPostBack)
             //{
             //    TextBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -26,7 +24,7 @@ namespace GeckoBooking
             if (IsPostBack)
             {
                 CreateTable();
-                Button1_OnClick(Page, e);
+                //Button1_OnClick(Page, e);
             }
         }
         
@@ -174,24 +172,24 @@ namespace GeckoBooking
             }
         }
 
-        protected void Button1_OnClick(object sender, EventArgs e)
-        {
-            IEnumerable<Control> cbList = GetAllControls(Page);
+        //protected void Button1_OnClick(object sender, EventArgs e)
+        //{
+        //    IEnumerable<Control> cbList = GetAllControls(Page);
 
-            var enumerable = cbList as IList<Control> ?? cbList.ToList();
+        //    var enumerable = cbList as IList<Control> ?? cbList.ToList();
 
-            foreach (var ctrl in enumerable)
-            {
-                if (ctrl.GetType() == typeof(CheckBox))
-                {
-                    var cbBox = (CheckBox)ctrl;
-                    if (cbBox.Checked)
-                    {
-                        cbBox.Checked = false;
-                    }
-                }
-            }
-        }
+        //    foreach (var ctrl in enumerable)
+        //    {
+        //        if (ctrl.GetType() == typeof(CheckBox))
+        //        {
+        //            var cbBox = (CheckBox)ctrl;
+        //            if (cbBox.Checked)
+        //            {
+        //                cbBox.Checked = false;
+        //            }
+        //        }
+        //    }
+        //}
 
         protected void ConfirmBooking_OnClick(object sender, EventArgs e)
         {

@@ -42,7 +42,7 @@
 
                         <br />
                         <div id="datepicker" style="display: none"></div>
-                        <asp:Button ID="Button1" runat="server" Text="Show available sessions" CssClass="bookingButton" OnClick="Button1_OnClick" />
+                        <asp:Button ID="Button1" runat="server" Text="Show available sessions" CssClass="bookingButton" />
                         <br />
                     </div>
                 </div>
