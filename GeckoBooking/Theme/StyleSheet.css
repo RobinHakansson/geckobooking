@@ -182,7 +182,7 @@ header.full {
 #main-content {
     background-color: white;
     border-radius: 8px;
-    height: 2000px;
+    height: auto;
     width: 80%;
     margin: 0 auto;
     margin-top: 120px;
