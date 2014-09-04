@@ -3,5 +3,12 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <br/>
+    <asp:Label ID="UserName" runat="server"></asp:Label>
+    <br/>
+    <br/>
+    <asp:Table ID="MyBookingsTable" runat="server" CssClass="myBookingsTable"></asp:Table>
+   <br/>
+    <asp:Button ID="Cancel" runat="server" Text="Remove" OnClick="CancelSession_OnClick" />
     
 </asp:Content>
